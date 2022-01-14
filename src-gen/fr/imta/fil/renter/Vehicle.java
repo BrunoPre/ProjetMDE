@@ -17,8 +17,8 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link fr.imta.fil.renter.Vehicle#getIdVehicle <em>Id Vehicle</em>}</li>
  *   <li>{@link fr.imta.fil.renter.Vehicle#getName <em>Name</em>}</li>
- *   <li>{@link fr.imta.fil.renter.Vehicle#getVolume <em>Volume</em>}</li>
- *   <li>{@link fr.imta.fil.renter.Vehicle#getBrew <em>Brew</em>}</li>
+ *   <li>{@link fr.imta.fil.renter.Vehicle#getHoldingCapacity <em>Holding Capacity</em>}</li>
+ *   <li>{@link fr.imta.fil.renter.Vehicle#getRent <em>Rent</em>}</li>
  * </ul>
  *
  * @see fr.imta.fil.renter.RenterPackage#getVehicle()
@@ -71,37 +71,37 @@ public interface Vehicle extends EObject {
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Volume</b></em>' attribute.
+	 * Returns the value of the '<em><b>Holding Capacity</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Volume</em>' attribute.
-	 * @see #setVolume(Float)
-	 * @see fr.imta.fil.renter.RenterPackage#getVehicle_Volume()
+	 * @return the value of the '<em>Holding Capacity</em>' attribute.
+	 * @see #setHoldingCapacity(Float)
+	 * @see fr.imta.fil.renter.RenterPackage#getVehicle_HoldingCapacity()
 	 * @model unique="false"
 	 * @generated
 	 */
-	Float getVolume();
+	Float getHoldingCapacity();
 
 	/**
-	 * Sets the value of the '{@link fr.imta.fil.renter.Vehicle#getVolume <em>Volume</em>}' attribute.
+	 * Sets the value of the '{@link fr.imta.fil.renter.Vehicle#getHoldingCapacity <em>Holding Capacity</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Volume</em>' attribute.
-	 * @see #getVolume()
+	 * @param value the new value of the '<em>Holding Capacity</em>' attribute.
+	 * @see #getHoldingCapacity()
 	 * @generated
 	 */
-	void setVolume(Float value);
+	void setHoldingCapacity(Float value);
 
 	/**
-	 * Returns the value of the '<em><b>Brew</b></em>' reference list.
-	 * The list contents are of type {@link fr.imta.fil.renter.Brew}.
+	 * Returns the value of the '<em><b>Rent</b></em>' reference list.
+	 * The list contents are of type {@link fr.imta.fil.renter.Rent}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Brew</em>' reference list.
-	 * @see fr.imta.fil.renter.RenterPackage#getVehicle_Brew()
+	 * @return the value of the '<em>Rent</em>' reference list.
+	 * @see fr.imta.fil.renter.RenterPackage#getVehicle_Rent()
 	 * @model
 	 * @generated
 	 */
-	EList<Brew> getBrew();
+	EList<Rent> getRent();
 
 } // Vehicle

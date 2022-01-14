@@ -12,29 +12,48 @@ class Renter {
 // do not reuse 'contains' for the other classes but 'refers'
 // many = [*] ; one = []
 
-class Vehicle { // Beer -- one --> Brew
-	Integer idVehicle 
+// ----- client stuff ------ //
+
+class Client { // Client --one--> Vehicle (only 0/1 Client can rent a vehicle)
+	Integer idClient
 	String name
-	Float volume
-	refers Brew[] brew
+	Date birthDate
+	refers Rent[] rent
 }
 
-// TODO: create inheriting classes to Vehicle one to one
+// ----- vehicle stuff ------ //
 
+class Vehicle { // Vehicle -- one --> Client (a vehicle is rent by only 1 client)
+	Integer idVehicle 
+	String name // typically brand+model
+	Float holdingCapacity
+	refers Rent[] rent
+}
+
+
+class Car extends Vehicle {}
+
+class Truck extends Vehicle {}
+
+class PickUp extends Vehicle {}
+
+// ----- rent stuff ----- //
+class Rent {
+	Integer idRent
+	Date startDate
+	Date endDate
+	refers Client[] client
+	refers Vehicle[] vehicle
+}
+ 
+
+// ----- employee/er stuff ------ //
 class Employee {
 	String name
 	String firstName
 	Date birthDate
 }
 
-class Brew { // Brew -- many --> Brewers
-	Integer idBrew 
-	String recipe
-	Float prodQuantity
-	Date brewDate
-	refers Brewer[*] brewers
-}
+class Manager extends Employee {} // boss of the shop
+	
 
-class Brewer extends Employee { // brasseur
-		
-}

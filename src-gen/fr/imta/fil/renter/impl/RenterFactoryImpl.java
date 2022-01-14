@@ -57,10 +57,14 @@ public class RenterFactoryImpl extends EFactoryImpl implements RenterFactory {
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case RenterPackage.RENTER: return createRenter();
+			case RenterPackage.CLIENT: return createClient();
 			case RenterPackage.VEHICLE: return createVehicle();
+			case RenterPackage.CAR: return createCar();
+			case RenterPackage.TRUCK: return createTruck();
+			case RenterPackage.PICK_UP: return createPickUp();
+			case RenterPackage.RENT: return createRent();
 			case RenterPackage.EMPLOYEE: return createEmployee();
-			case RenterPackage.BREW: return createBrew();
-			case RenterPackage.BREWER: return createBrewer();
+			case RenterPackage.MANAGER: return createManager();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -81,9 +85,59 @@ public class RenterFactoryImpl extends EFactoryImpl implements RenterFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Client createClient() {
+		ClientImpl client = new ClientImpl();
+		return client;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Vehicle createVehicle() {
 		VehicleImpl vehicle = new VehicleImpl();
 		return vehicle;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Car createCar() {
+		CarImpl car = new CarImpl();
+		return car;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Truck createTruck() {
+		TruckImpl truck = new TruckImpl();
+		return truck;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PickUp createPickUp() {
+		PickUpImpl pickUp = new PickUpImpl();
+		return pickUp;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Rent createRent() {
+		RentImpl rent = new RentImpl();
+		return rent;
 	}
 
 	/**
@@ -101,19 +155,9 @@ public class RenterFactoryImpl extends EFactoryImpl implements RenterFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Brew createBrew() {
-		BrewImpl brew = new BrewImpl();
-		return brew;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Brewer createBrewer() {
-		BrewerImpl brewer = new BrewerImpl();
-		return brewer;
+	public Manager createManager() {
+		ManagerImpl manager = new ManagerImpl();
+		return manager;
 	}
 
 	/**

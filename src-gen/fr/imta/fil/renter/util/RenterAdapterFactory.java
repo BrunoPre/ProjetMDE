@@ -72,20 +72,36 @@ public class RenterAdapterFactory extends AdapterFactoryImpl {
 				return createRenterAdapter();
 			}
 			@Override
+			public Adapter caseClient(Client object) {
+				return createClientAdapter();
+			}
+			@Override
 			public Adapter caseVehicle(Vehicle object) {
 				return createVehicleAdapter();
+			}
+			@Override
+			public Adapter caseCar(Car object) {
+				return createCarAdapter();
+			}
+			@Override
+			public Adapter caseTruck(Truck object) {
+				return createTruckAdapter();
+			}
+			@Override
+			public Adapter casePickUp(PickUp object) {
+				return createPickUpAdapter();
+			}
+			@Override
+			public Adapter caseRent(Rent object) {
+				return createRentAdapter();
 			}
 			@Override
 			public Adapter caseEmployee(Employee object) {
 				return createEmployeeAdapter();
 			}
 			@Override
-			public Adapter caseBrew(Brew object) {
-				return createBrewAdapter();
-			}
-			@Override
-			public Adapter caseBrewer(Brewer object) {
-				return createBrewerAdapter();
+			public Adapter caseManager(Manager object) {
+				return createManagerAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -122,6 +138,20 @@ public class RenterAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link fr.imta.fil.renter.Client <em>Client</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.imta.fil.renter.Client
+	 * @generated
+	 */
+	public Adapter createClientAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link fr.imta.fil.renter.Vehicle <em>Vehicle</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -132,6 +162,62 @@ public class RenterAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createVehicleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.imta.fil.renter.Car <em>Car</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.imta.fil.renter.Car
+	 * @generated
+	 */
+	public Adapter createCarAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.imta.fil.renter.Truck <em>Truck</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.imta.fil.renter.Truck
+	 * @generated
+	 */
+	public Adapter createTruckAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.imta.fil.renter.PickUp <em>Pick Up</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.imta.fil.renter.PickUp
+	 * @generated
+	 */
+	public Adapter createPickUpAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.imta.fil.renter.Rent <em>Rent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.imta.fil.renter.Rent
+	 * @generated
+	 */
+	public Adapter createRentAdapter() {
 		return null;
 	}
 
@@ -150,30 +236,16 @@ public class RenterAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link fr.imta.fil.renter.Brew <em>Brew</em>}'.
+	 * Creates a new adapter for an object of class '{@link fr.imta.fil.renter.Manager <em>Manager</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see fr.imta.fil.renter.Brew
+	 * @see fr.imta.fil.renter.Manager
 	 * @generated
 	 */
-	public Adapter createBrewAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link fr.imta.fil.renter.Brewer <em>Brewer</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see fr.imta.fil.renter.Brewer
-	 * @generated
-	 */
-	public Adapter createBrewerAdapter() {
+	public Adapter createManagerAdapter() {
 		return null;
 	}
 

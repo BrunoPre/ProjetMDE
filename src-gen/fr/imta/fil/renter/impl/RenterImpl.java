@@ -2,6 +2,7 @@
  */
 package fr.imta.fil.renter.impl;
 
+import fr.imta.fil.renter.Client;
 import fr.imta.fil.renter.Employee;
 import fr.imta.fil.renter.Renter;
 import fr.imta.fil.renter.RenterPackage;
@@ -88,7 +89,7 @@ public class RenterImpl extends MinimalEObjectImpl.Container implements Renter {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Object> clients;
+	protected EList<Client> clients;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -159,9 +160,9 @@ public class RenterImpl extends MinimalEObjectImpl.Container implements Renter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Object> getClients() {
+	public EList<Client> getClients() {
 		if (clients == null) {
-			clients = new EObjectContainmentEList<Object>(Object.class, this, RenterPackage.RENTER__CLIENTS);
+			clients = new EObjectContainmentEList<Client>(Client.class, this, RenterPackage.RENTER__CLIENTS);
 		}
 		return clients;
 	}
@@ -226,7 +227,7 @@ public class RenterImpl extends MinimalEObjectImpl.Container implements Renter {
 				return;
 			case RenterPackage.RENTER__CLIENTS:
 				getClients().clear();
-				getClients().addAll((Collection<? extends Object>)newValue);
+				getClients().addAll((Collection<? extends Client>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

@@ -2,11 +2,12 @@
  */
 package fr.imta.fil.renter.impl;
 
+import fr.imta.fil.renter.Client;
 import fr.imta.fil.renter.Rent;
 import fr.imta.fil.renter.RenterPackage;
-import fr.imta.fil.renter.Vehicle;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -21,40 +22,40 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Vehicle</b></em>'.
+ * An implementation of the model object '<em><b>Client</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link fr.imta.fil.renter.impl.VehicleImpl#getIdVehicle <em>Id Vehicle</em>}</li>
- *   <li>{@link fr.imta.fil.renter.impl.VehicleImpl#getName <em>Name</em>}</li>
- *   <li>{@link fr.imta.fil.renter.impl.VehicleImpl#getHoldingCapacity <em>Holding Capacity</em>}</li>
- *   <li>{@link fr.imta.fil.renter.impl.VehicleImpl#getRent <em>Rent</em>}</li>
+ *   <li>{@link fr.imta.fil.renter.impl.ClientImpl#getIdClient <em>Id Client</em>}</li>
+ *   <li>{@link fr.imta.fil.renter.impl.ClientImpl#getName <em>Name</em>}</li>
+ *   <li>{@link fr.imta.fil.renter.impl.ClientImpl#getBirthDate <em>Birth Date</em>}</li>
+ *   <li>{@link fr.imta.fil.renter.impl.ClientImpl#getRent <em>Rent</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class VehicleImpl extends MinimalEObjectImpl.Container implements Vehicle {
+public class ClientImpl extends MinimalEObjectImpl.Container implements Client {
 	/**
-	 * The default value of the '{@link #getIdVehicle() <em>Id Vehicle</em>}' attribute.
+	 * The default value of the '{@link #getIdClient() <em>Id Client</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getIdVehicle()
+	 * @see #getIdClient()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Integer ID_VEHICLE_EDEFAULT = null;
+	protected static final Integer ID_CLIENT_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getIdVehicle() <em>Id Vehicle</em>}' attribute.
+	 * The cached value of the '{@link #getIdClient() <em>Id Client</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getIdVehicle()
+	 * @see #getIdClient()
 	 * @generated
 	 * @ordered
 	 */
-	protected Integer idVehicle = ID_VEHICLE_EDEFAULT;
+	protected Integer idClient = ID_CLIENT_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -77,24 +78,24 @@ public class VehicleImpl extends MinimalEObjectImpl.Container implements Vehicle
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getHoldingCapacity() <em>Holding Capacity</em>}' attribute.
+	 * The default value of the '{@link #getBirthDate() <em>Birth Date</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getHoldingCapacity()
+	 * @see #getBirthDate()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Float HOLDING_CAPACITY_EDEFAULT = null;
+	protected static final Date BIRTH_DATE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getHoldingCapacity() <em>Holding Capacity</em>}' attribute.
+	 * The cached value of the '{@link #getBirthDate() <em>Birth Date</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getHoldingCapacity()
+	 * @see #getBirthDate()
 	 * @generated
 	 * @ordered
 	 */
-	protected Float holdingCapacity = HOLDING_CAPACITY_EDEFAULT;
+	protected Date birthDate = BIRTH_DATE_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getRent() <em>Rent</em>}' reference list.
@@ -111,7 +112,7 @@ public class VehicleImpl extends MinimalEObjectImpl.Container implements Vehicle
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected VehicleImpl() {
+	protected ClientImpl() {
 		super();
 	}
 
@@ -122,7 +123,7 @@ public class VehicleImpl extends MinimalEObjectImpl.Container implements Vehicle
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return RenterPackage.Literals.VEHICLE;
+		return RenterPackage.Literals.CLIENT;
 	}
 
 	/**
@@ -130,8 +131,8 @@ public class VehicleImpl extends MinimalEObjectImpl.Container implements Vehicle
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Integer getIdVehicle() {
-		return idVehicle;
+	public Integer getIdClient() {
+		return idClient;
 	}
 
 	/**
@@ -139,11 +140,11 @@ public class VehicleImpl extends MinimalEObjectImpl.Container implements Vehicle
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setIdVehicle(Integer newIdVehicle) {
-		Integer oldIdVehicle = idVehicle;
-		idVehicle = newIdVehicle;
+	public void setIdClient(Integer newIdClient) {
+		Integer oldIdClient = idClient;
+		idClient = newIdClient;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RenterPackage.VEHICLE__ID_VEHICLE, oldIdVehicle, idVehicle));
+			eNotify(new ENotificationImpl(this, Notification.SET, RenterPackage.CLIENT__ID_CLIENT, oldIdClient, idClient));
 	}
 
 	/**
@@ -164,7 +165,7 @@ public class VehicleImpl extends MinimalEObjectImpl.Container implements Vehicle
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RenterPackage.VEHICLE__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, RenterPackage.CLIENT__NAME, oldName, name));
 	}
 
 	/**
@@ -172,8 +173,8 @@ public class VehicleImpl extends MinimalEObjectImpl.Container implements Vehicle
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Float getHoldingCapacity() {
-		return holdingCapacity;
+	public Date getBirthDate() {
+		return birthDate;
 	}
 
 	/**
@@ -181,11 +182,11 @@ public class VehicleImpl extends MinimalEObjectImpl.Container implements Vehicle
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setHoldingCapacity(Float newHoldingCapacity) {
-		Float oldHoldingCapacity = holdingCapacity;
-		holdingCapacity = newHoldingCapacity;
+	public void setBirthDate(Date newBirthDate) {
+		Date oldBirthDate = birthDate;
+		birthDate = newBirthDate;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RenterPackage.VEHICLE__HOLDING_CAPACITY, oldHoldingCapacity, holdingCapacity));
+			eNotify(new ENotificationImpl(this, Notification.SET, RenterPackage.CLIENT__BIRTH_DATE, oldBirthDate, birthDate));
 	}
 
 	/**
@@ -195,7 +196,7 @@ public class VehicleImpl extends MinimalEObjectImpl.Container implements Vehicle
 	 */
 	public EList<Rent> getRent() {
 		if (rent == null) {
-			rent = new EObjectResolvingEList<Rent>(Rent.class, this, RenterPackage.VEHICLE__RENT);
+			rent = new EObjectResolvingEList<Rent>(Rent.class, this, RenterPackage.CLIENT__RENT);
 		}
 		return rent;
 	}
@@ -208,13 +209,13 @@ public class VehicleImpl extends MinimalEObjectImpl.Container implements Vehicle
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case RenterPackage.VEHICLE__ID_VEHICLE:
-				return getIdVehicle();
-			case RenterPackage.VEHICLE__NAME:
+			case RenterPackage.CLIENT__ID_CLIENT:
+				return getIdClient();
+			case RenterPackage.CLIENT__NAME:
 				return getName();
-			case RenterPackage.VEHICLE__HOLDING_CAPACITY:
-				return getHoldingCapacity();
-			case RenterPackage.VEHICLE__RENT:
+			case RenterPackage.CLIENT__BIRTH_DATE:
+				return getBirthDate();
+			case RenterPackage.CLIENT__RENT:
 				return getRent();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -229,16 +230,16 @@ public class VehicleImpl extends MinimalEObjectImpl.Container implements Vehicle
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case RenterPackage.VEHICLE__ID_VEHICLE:
-				setIdVehicle((Integer)newValue);
+			case RenterPackage.CLIENT__ID_CLIENT:
+				setIdClient((Integer)newValue);
 				return;
-			case RenterPackage.VEHICLE__NAME:
+			case RenterPackage.CLIENT__NAME:
 				setName((String)newValue);
 				return;
-			case RenterPackage.VEHICLE__HOLDING_CAPACITY:
-				setHoldingCapacity((Float)newValue);
+			case RenterPackage.CLIENT__BIRTH_DATE:
+				setBirthDate((Date)newValue);
 				return;
-			case RenterPackage.VEHICLE__RENT:
+			case RenterPackage.CLIENT__RENT:
 				getRent().clear();
 				getRent().addAll((Collection<? extends Rent>)newValue);
 				return;
@@ -254,16 +255,16 @@ public class VehicleImpl extends MinimalEObjectImpl.Container implements Vehicle
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case RenterPackage.VEHICLE__ID_VEHICLE:
-				setIdVehicle(ID_VEHICLE_EDEFAULT);
+			case RenterPackage.CLIENT__ID_CLIENT:
+				setIdClient(ID_CLIENT_EDEFAULT);
 				return;
-			case RenterPackage.VEHICLE__NAME:
+			case RenterPackage.CLIENT__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case RenterPackage.VEHICLE__HOLDING_CAPACITY:
-				setHoldingCapacity(HOLDING_CAPACITY_EDEFAULT);
+			case RenterPackage.CLIENT__BIRTH_DATE:
+				setBirthDate(BIRTH_DATE_EDEFAULT);
 				return;
-			case RenterPackage.VEHICLE__RENT:
+			case RenterPackage.CLIENT__RENT:
 				getRent().clear();
 				return;
 		}
@@ -278,13 +279,13 @@ public class VehicleImpl extends MinimalEObjectImpl.Container implements Vehicle
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case RenterPackage.VEHICLE__ID_VEHICLE:
-				return ID_VEHICLE_EDEFAULT == null ? idVehicle != null : !ID_VEHICLE_EDEFAULT.equals(idVehicle);
-			case RenterPackage.VEHICLE__NAME:
+			case RenterPackage.CLIENT__ID_CLIENT:
+				return ID_CLIENT_EDEFAULT == null ? idClient != null : !ID_CLIENT_EDEFAULT.equals(idClient);
+			case RenterPackage.CLIENT__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case RenterPackage.VEHICLE__HOLDING_CAPACITY:
-				return HOLDING_CAPACITY_EDEFAULT == null ? holdingCapacity != null : !HOLDING_CAPACITY_EDEFAULT.equals(holdingCapacity);
-			case RenterPackage.VEHICLE__RENT:
+			case RenterPackage.CLIENT__BIRTH_DATE:
+				return BIRTH_DATE_EDEFAULT == null ? birthDate != null : !BIRTH_DATE_EDEFAULT.equals(birthDate);
+			case RenterPackage.CLIENT__RENT:
 				return rent != null && !rent.isEmpty();
 		}
 		return super.eIsSet(featureID);
@@ -300,14 +301,14 @@ public class VehicleImpl extends MinimalEObjectImpl.Container implements Vehicle
 		if (eIsProxy()) return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (idVehicle: ");
-		result.append(idVehicle);
+		result.append(" (idClient: ");
+		result.append(idClient);
 		result.append(", name: ");
 		result.append(name);
-		result.append(", holdingCapacity: ");
-		result.append(holdingCapacity);
+		result.append(", birthDate: ");
+		result.append(birthDate);
 		result.append(')');
 		return result.toString();
 	}
 
-} //VehicleImpl
+} //ClientImpl

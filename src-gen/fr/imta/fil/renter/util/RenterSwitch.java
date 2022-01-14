@@ -72,9 +72,42 @@ public class RenterSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case RenterPackage.CLIENT: {
+				Client client = (Client)theEObject;
+				T result = caseClient(client);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case RenterPackage.VEHICLE: {
 				Vehicle vehicle = (Vehicle)theEObject;
 				T result = caseVehicle(vehicle);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case RenterPackage.CAR: {
+				Car car = (Car)theEObject;
+				T result = caseCar(car);
+				if (result == null) result = caseVehicle(car);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case RenterPackage.TRUCK: {
+				Truck truck = (Truck)theEObject;
+				T result = caseTruck(truck);
+				if (result == null) result = caseVehicle(truck);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case RenterPackage.PICK_UP: {
+				PickUp pickUp = (PickUp)theEObject;
+				T result = casePickUp(pickUp);
+				if (result == null) result = caseVehicle(pickUp);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case RenterPackage.RENT: {
+				Rent rent = (Rent)theEObject;
+				T result = caseRent(rent);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -84,16 +117,10 @@ public class RenterSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case RenterPackage.BREW: {
-				Brew brew = (Brew)theEObject;
-				T result = caseBrew(brew);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case RenterPackage.BREWER: {
-				Brewer brewer = (Brewer)theEObject;
-				T result = caseBrewer(brewer);
-				if (result == null) result = caseEmployee(brewer);
+			case RenterPackage.MANAGER: {
+				Manager manager = (Manager)theEObject;
+				T result = caseManager(manager);
+				if (result == null) result = caseEmployee(manager);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -117,6 +144,21 @@ public class RenterSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Client</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Client</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseClient(Client object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Vehicle</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -128,6 +170,66 @@ public class RenterSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseVehicle(Vehicle object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Car</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Car</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCar(Car object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Truck</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Truck</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTruck(Truck object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Pick Up</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Pick Up</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePickUp(PickUp object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Rent</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Rent</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRent(Rent object) {
 		return null;
 	}
 
@@ -147,32 +249,17 @@ public class RenterSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Brew</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Manager</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Brew</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Manager</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseBrew(Brew object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Brewer</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Brewer</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseBrewer(Brewer object) {
+	public T caseManager(Manager object) {
 		return null;
 	}
 

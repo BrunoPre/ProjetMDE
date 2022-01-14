@@ -74,14 +74,14 @@ public interface Renter extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Clients</b></em>' containment reference list.
-	 * The list contents are of type {@link java.lang.Object}.
+	 * The list contents are of type {@link fr.imta.fil.renter.Client}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Clients</em>' containment reference list.
 	 * @see fr.imta.fil.renter.RenterPackage#getRenter_Clients()
-	 * @model type="org.eclipse.emf.ecore.EJavaObject" containment="true"
+	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Object> getClients();
+	EList<Client> getClients();
 
 } // Renter

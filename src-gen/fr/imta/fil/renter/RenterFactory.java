@@ -31,6 +31,15 @@ public interface RenterFactory extends EFactory {
 	Renter createRenter();
 
 	/**
+	 * Returns a new object of class '<em>Client</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Client</em>'.
+	 * @generated
+	 */
+	Client createClient();
+
+	/**
 	 * Returns a new object of class '<em>Vehicle</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -38,6 +47,42 @@ public interface RenterFactory extends EFactory {
 	 * @generated
 	 */
 	Vehicle createVehicle();
+
+	/**
+	 * Returns a new object of class '<em>Car</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Car</em>'.
+	 * @generated
+	 */
+	Car createCar();
+
+	/**
+	 * Returns a new object of class '<em>Truck</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Truck</em>'.
+	 * @generated
+	 */
+	Truck createTruck();
+
+	/**
+	 * Returns a new object of class '<em>Pick Up</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Pick Up</em>'.
+	 * @generated
+	 */
+	PickUp createPickUp();
+
+	/**
+	 * Returns a new object of class '<em>Rent</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Rent</em>'.
+	 * @generated
+	 */
+	Rent createRent();
 
 	/**
 	 * Returns a new object of class '<em>Employee</em>'.
@@ -49,22 +94,13 @@ public interface RenterFactory extends EFactory {
 	Employee createEmployee();
 
 	/**
-	 * Returns a new object of class '<em>Brew</em>'.
+	 * Returns a new object of class '<em>Manager</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Brew</em>'.
+	 * @return a new object of class '<em>Manager</em>'.
 	 * @generated
 	 */
-	Brew createBrew();
-
-	/**
-	 * Returns a new object of class '<em>Brewer</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Brewer</em>'.
-	 * @generated
-	 */
-	Brewer createBrewer();
+	Manager createManager();
 
 	/**
 	 * Returns the package supported by this factory.

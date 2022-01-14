@@ -121,6 +121,70 @@ public interface RenterPackage extends EPackage {
 	int RENTER_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link fr.imta.fil.renter.impl.ClientImpl <em>Client</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.imta.fil.renter.impl.ClientImpl
+	 * @see fr.imta.fil.renter.impl.RenterPackageImpl#getClient()
+	 * @generated
+	 */
+	int CLIENT = 1;
+
+	/**
+	 * The feature id for the '<em><b>Id Client</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLIENT__ID_CLIENT = 0;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLIENT__NAME = 1;
+
+	/**
+	 * The feature id for the '<em><b>Birth Date</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLIENT__BIRTH_DATE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Rent</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLIENT__RENT = 3;
+
+	/**
+	 * The number of structural features of the '<em>Client</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLIENT_FEATURE_COUNT = 4;
+
+	/**
+	 * The number of operations of the '<em>Client</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLIENT_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link fr.imta.fil.renter.impl.VehicleImpl <em>Vehicle</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -128,7 +192,7 @@ public interface RenterPackage extends EPackage {
 	 * @see fr.imta.fil.renter.impl.RenterPackageImpl#getVehicle()
 	 * @generated
 	 */
-	int VEHICLE = 1;
+	int VEHICLE = 2;
 
 	/**
 	 * The feature id for the '<em><b>Id Vehicle</b></em>' attribute.
@@ -149,22 +213,22 @@ public interface RenterPackage extends EPackage {
 	int VEHICLE__NAME = 1;
 
 	/**
-	 * The feature id for the '<em><b>Volume</b></em>' attribute.
+	 * The feature id for the '<em><b>Holding Capacity</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VEHICLE__VOLUME = 2;
+	int VEHICLE__HOLDING_CAPACITY = 2;
 
 	/**
-	 * The feature id for the '<em><b>Brew</b></em>' reference list.
+	 * The feature id for the '<em><b>Rent</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VEHICLE__BREW = 3;
+	int VEHICLE__RENT = 3;
 
 	/**
 	 * The number of structural features of the '<em>Vehicle</em>' class.
@@ -185,6 +249,271 @@ public interface RenterPackage extends EPackage {
 	int VEHICLE_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link fr.imta.fil.renter.impl.CarImpl <em>Car</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.imta.fil.renter.impl.CarImpl
+	 * @see fr.imta.fil.renter.impl.RenterPackageImpl#getCar()
+	 * @generated
+	 */
+	int CAR = 3;
+
+	/**
+	 * The feature id for the '<em><b>Id Vehicle</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAR__ID_VEHICLE = VEHICLE__ID_VEHICLE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAR__NAME = VEHICLE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Holding Capacity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAR__HOLDING_CAPACITY = VEHICLE__HOLDING_CAPACITY;
+
+	/**
+	 * The feature id for the '<em><b>Rent</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAR__RENT = VEHICLE__RENT;
+
+	/**
+	 * The number of structural features of the '<em>Car</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAR_FEATURE_COUNT = VEHICLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Car</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAR_OPERATION_COUNT = VEHICLE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link fr.imta.fil.renter.impl.TruckImpl <em>Truck</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.imta.fil.renter.impl.TruckImpl
+	 * @see fr.imta.fil.renter.impl.RenterPackageImpl#getTruck()
+	 * @generated
+	 */
+	int TRUCK = 4;
+
+	/**
+	 * The feature id for the '<em><b>Id Vehicle</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRUCK__ID_VEHICLE = VEHICLE__ID_VEHICLE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRUCK__NAME = VEHICLE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Holding Capacity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRUCK__HOLDING_CAPACITY = VEHICLE__HOLDING_CAPACITY;
+
+	/**
+	 * The feature id for the '<em><b>Rent</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRUCK__RENT = VEHICLE__RENT;
+
+	/**
+	 * The number of structural features of the '<em>Truck</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRUCK_FEATURE_COUNT = VEHICLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Truck</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRUCK_OPERATION_COUNT = VEHICLE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link fr.imta.fil.renter.impl.PickUpImpl <em>Pick Up</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.imta.fil.renter.impl.PickUpImpl
+	 * @see fr.imta.fil.renter.impl.RenterPackageImpl#getPickUp()
+	 * @generated
+	 */
+	int PICK_UP = 5;
+
+	/**
+	 * The feature id for the '<em><b>Id Vehicle</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PICK_UP__ID_VEHICLE = VEHICLE__ID_VEHICLE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PICK_UP__NAME = VEHICLE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Holding Capacity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PICK_UP__HOLDING_CAPACITY = VEHICLE__HOLDING_CAPACITY;
+
+	/**
+	 * The feature id for the '<em><b>Rent</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PICK_UP__RENT = VEHICLE__RENT;
+
+	/**
+	 * The number of structural features of the '<em>Pick Up</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PICK_UP_FEATURE_COUNT = VEHICLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Pick Up</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PICK_UP_OPERATION_COUNT = VEHICLE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link fr.imta.fil.renter.impl.RentImpl <em>Rent</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.imta.fil.renter.impl.RentImpl
+	 * @see fr.imta.fil.renter.impl.RenterPackageImpl#getRent()
+	 * @generated
+	 */
+	int RENT = 6;
+
+	/**
+	 * The feature id for the '<em><b>Id Rent</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RENT__ID_RENT = 0;
+
+	/**
+	 * The feature id for the '<em><b>Start Date</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RENT__START_DATE = 1;
+
+	/**
+	 * The feature id for the '<em><b>End Date</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RENT__END_DATE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Client</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RENT__CLIENT = 3;
+
+	/**
+	 * The feature id for the '<em><b>Vehicle</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RENT__VEHICLE = 4;
+
+	/**
+	 * The number of structural features of the '<em>Rent</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RENT_FEATURE_COUNT = 5;
+
+	/**
+	 * The number of operations of the '<em>Rent</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RENT_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link fr.imta.fil.renter.impl.EmployeeImpl <em>Employee</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -192,7 +521,7 @@ public interface RenterPackage extends EPackage {
 	 * @see fr.imta.fil.renter.impl.RenterPackageImpl#getEmployee()
 	 * @generated
 	 */
-	int EMPLOYEE = 2;
+	int EMPLOYEE = 7;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -240,87 +569,14 @@ public interface RenterPackage extends EPackage {
 	int EMPLOYEE_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link fr.imta.fil.renter.impl.BrewImpl <em>Brew</em>}' class.
+	 * The meta object id for the '{@link fr.imta.fil.renter.impl.ManagerImpl <em>Manager</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see fr.imta.fil.renter.impl.BrewImpl
-	 * @see fr.imta.fil.renter.impl.RenterPackageImpl#getBrew()
+	 * @see fr.imta.fil.renter.impl.ManagerImpl
+	 * @see fr.imta.fil.renter.impl.RenterPackageImpl#getManager()
 	 * @generated
 	 */
-	int BREW = 3;
-
-	/**
-	 * The feature id for the '<em><b>Id Brew</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BREW__ID_BREW = 0;
-
-	/**
-	 * The feature id for the '<em><b>Recipe</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BREW__RECIPE = 1;
-
-	/**
-	 * The feature id for the '<em><b>Prod Quantity</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BREW__PROD_QUANTITY = 2;
-
-	/**
-	 * The feature id for the '<em><b>Brew Date</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BREW__BREW_DATE = 3;
-
-	/**
-	 * The feature id for the '<em><b>Brewers</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BREW__BREWERS = 4;
-
-	/**
-	 * The number of structural features of the '<em>Brew</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BREW_FEATURE_COUNT = 5;
-
-	/**
-	 * The number of operations of the '<em>Brew</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BREW_OPERATION_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link fr.imta.fil.renter.impl.BrewerImpl <em>Brewer</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see fr.imta.fil.renter.impl.BrewerImpl
-	 * @see fr.imta.fil.renter.impl.RenterPackageImpl#getBrewer()
-	 * @generated
-	 */
-	int BREWER = 4;
+	int MANAGER = 8;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -329,7 +585,7 @@ public interface RenterPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BREWER__NAME = EMPLOYEE__NAME;
+	int MANAGER__NAME = EMPLOYEE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>First Name</b></em>' attribute.
@@ -338,7 +594,7 @@ public interface RenterPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BREWER__FIRST_NAME = EMPLOYEE__FIRST_NAME;
+	int MANAGER__FIRST_NAME = EMPLOYEE__FIRST_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Birth Date</b></em>' attribute.
@@ -347,25 +603,25 @@ public interface RenterPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BREWER__BIRTH_DATE = EMPLOYEE__BIRTH_DATE;
+	int MANAGER__BIRTH_DATE = EMPLOYEE__BIRTH_DATE;
 
 	/**
-	 * The number of structural features of the '<em>Brewer</em>' class.
+	 * The number of structural features of the '<em>Manager</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BREWER_FEATURE_COUNT = EMPLOYEE_FEATURE_COUNT + 0;
+	int MANAGER_FEATURE_COUNT = EMPLOYEE_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of operations of the '<em>Brewer</em>' class.
+	 * The number of operations of the '<em>Manager</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BREWER_OPERATION_COUNT = EMPLOYEE_OPERATION_COUNT + 0;
+	int MANAGER_OPERATION_COUNT = EMPLOYEE_OPERATION_COUNT + 0;
 
 
 	/**
@@ -423,6 +679,60 @@ public interface RenterPackage extends EPackage {
 	EReference getRenter_Clients();
 
 	/**
+	 * Returns the meta object for class '{@link fr.imta.fil.renter.Client <em>Client</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Client</em>'.
+	 * @see fr.imta.fil.renter.Client
+	 * @generated
+	 */
+	EClass getClient();
+
+	/**
+	 * Returns the meta object for the attribute '{@link fr.imta.fil.renter.Client#getIdClient <em>Id Client</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Id Client</em>'.
+	 * @see fr.imta.fil.renter.Client#getIdClient()
+	 * @see #getClient()
+	 * @generated
+	 */
+	EAttribute getClient_IdClient();
+
+	/**
+	 * Returns the meta object for the attribute '{@link fr.imta.fil.renter.Client#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see fr.imta.fil.renter.Client#getName()
+	 * @see #getClient()
+	 * @generated
+	 */
+	EAttribute getClient_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link fr.imta.fil.renter.Client#getBirthDate <em>Birth Date</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Birth Date</em>'.
+	 * @see fr.imta.fil.renter.Client#getBirthDate()
+	 * @see #getClient()
+	 * @generated
+	 */
+	EAttribute getClient_BirthDate();
+
+	/**
+	 * Returns the meta object for the reference list '{@link fr.imta.fil.renter.Client#getRent <em>Rent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Rent</em>'.
+	 * @see fr.imta.fil.renter.Client#getRent()
+	 * @see #getClient()
+	 * @generated
+	 */
+	EReference getClient_Rent();
+
+	/**
 	 * Returns the meta object for class '{@link fr.imta.fil.renter.Vehicle <em>Vehicle</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -455,26 +765,121 @@ public interface RenterPackage extends EPackage {
 	EAttribute getVehicle_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link fr.imta.fil.renter.Vehicle#getVolume <em>Volume</em>}'.
+	 * Returns the meta object for the attribute '{@link fr.imta.fil.renter.Vehicle#getHoldingCapacity <em>Holding Capacity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Volume</em>'.
-	 * @see fr.imta.fil.renter.Vehicle#getVolume()
+	 * @return the meta object for the attribute '<em>Holding Capacity</em>'.
+	 * @see fr.imta.fil.renter.Vehicle#getHoldingCapacity()
 	 * @see #getVehicle()
 	 * @generated
 	 */
-	EAttribute getVehicle_Volume();
+	EAttribute getVehicle_HoldingCapacity();
 
 	/**
-	 * Returns the meta object for the reference list '{@link fr.imta.fil.renter.Vehicle#getBrew <em>Brew</em>}'.
+	 * Returns the meta object for the reference list '{@link fr.imta.fil.renter.Vehicle#getRent <em>Rent</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Brew</em>'.
-	 * @see fr.imta.fil.renter.Vehicle#getBrew()
+	 * @return the meta object for the reference list '<em>Rent</em>'.
+	 * @see fr.imta.fil.renter.Vehicle#getRent()
 	 * @see #getVehicle()
 	 * @generated
 	 */
-	EReference getVehicle_Brew();
+	EReference getVehicle_Rent();
+
+	/**
+	 * Returns the meta object for class '{@link fr.imta.fil.renter.Car <em>Car</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Car</em>'.
+	 * @see fr.imta.fil.renter.Car
+	 * @generated
+	 */
+	EClass getCar();
+
+	/**
+	 * Returns the meta object for class '{@link fr.imta.fil.renter.Truck <em>Truck</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Truck</em>'.
+	 * @see fr.imta.fil.renter.Truck
+	 * @generated
+	 */
+	EClass getTruck();
+
+	/**
+	 * Returns the meta object for class '{@link fr.imta.fil.renter.PickUp <em>Pick Up</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Pick Up</em>'.
+	 * @see fr.imta.fil.renter.PickUp
+	 * @generated
+	 */
+	EClass getPickUp();
+
+	/**
+	 * Returns the meta object for class '{@link fr.imta.fil.renter.Rent <em>Rent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Rent</em>'.
+	 * @see fr.imta.fil.renter.Rent
+	 * @generated
+	 */
+	EClass getRent();
+
+	/**
+	 * Returns the meta object for the attribute '{@link fr.imta.fil.renter.Rent#getIdRent <em>Id Rent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Id Rent</em>'.
+	 * @see fr.imta.fil.renter.Rent#getIdRent()
+	 * @see #getRent()
+	 * @generated
+	 */
+	EAttribute getRent_IdRent();
+
+	/**
+	 * Returns the meta object for the attribute '{@link fr.imta.fil.renter.Rent#getStartDate <em>Start Date</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Start Date</em>'.
+	 * @see fr.imta.fil.renter.Rent#getStartDate()
+	 * @see #getRent()
+	 * @generated
+	 */
+	EAttribute getRent_StartDate();
+
+	/**
+	 * Returns the meta object for the attribute '{@link fr.imta.fil.renter.Rent#getEndDate <em>End Date</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>End Date</em>'.
+	 * @see fr.imta.fil.renter.Rent#getEndDate()
+	 * @see #getRent()
+	 * @generated
+	 */
+	EAttribute getRent_EndDate();
+
+	/**
+	 * Returns the meta object for the reference list '{@link fr.imta.fil.renter.Rent#getClient <em>Client</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Client</em>'.
+	 * @see fr.imta.fil.renter.Rent#getClient()
+	 * @see #getRent()
+	 * @generated
+	 */
+	EReference getRent_Client();
+
+	/**
+	 * Returns the meta object for the reference list '{@link fr.imta.fil.renter.Rent#getVehicle <em>Vehicle</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Vehicle</em>'.
+	 * @see fr.imta.fil.renter.Rent#getVehicle()
+	 * @see #getRent()
+	 * @generated
+	 */
+	EReference getRent_Vehicle();
 
 	/**
 	 * Returns the meta object for class '{@link fr.imta.fil.renter.Employee <em>Employee</em>}'.
@@ -520,79 +925,14 @@ public interface RenterPackage extends EPackage {
 	EAttribute getEmployee_BirthDate();
 
 	/**
-	 * Returns the meta object for class '{@link fr.imta.fil.renter.Brew <em>Brew</em>}'.
+	 * Returns the meta object for class '{@link fr.imta.fil.renter.Manager <em>Manager</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Brew</em>'.
-	 * @see fr.imta.fil.renter.Brew
+	 * @return the meta object for class '<em>Manager</em>'.
+	 * @see fr.imta.fil.renter.Manager
 	 * @generated
 	 */
-	EClass getBrew();
-
-	/**
-	 * Returns the meta object for the attribute '{@link fr.imta.fil.renter.Brew#getIdBrew <em>Id Brew</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Id Brew</em>'.
-	 * @see fr.imta.fil.renter.Brew#getIdBrew()
-	 * @see #getBrew()
-	 * @generated
-	 */
-	EAttribute getBrew_IdBrew();
-
-	/**
-	 * Returns the meta object for the attribute '{@link fr.imta.fil.renter.Brew#getRecipe <em>Recipe</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Recipe</em>'.
-	 * @see fr.imta.fil.renter.Brew#getRecipe()
-	 * @see #getBrew()
-	 * @generated
-	 */
-	EAttribute getBrew_Recipe();
-
-	/**
-	 * Returns the meta object for the attribute '{@link fr.imta.fil.renter.Brew#getProdQuantity <em>Prod Quantity</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Prod Quantity</em>'.
-	 * @see fr.imta.fil.renter.Brew#getProdQuantity()
-	 * @see #getBrew()
-	 * @generated
-	 */
-	EAttribute getBrew_ProdQuantity();
-
-	/**
-	 * Returns the meta object for the attribute '{@link fr.imta.fil.renter.Brew#getBrewDate <em>Brew Date</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Brew Date</em>'.
-	 * @see fr.imta.fil.renter.Brew#getBrewDate()
-	 * @see #getBrew()
-	 * @generated
-	 */
-	EAttribute getBrew_BrewDate();
-
-	/**
-	 * Returns the meta object for the reference list '{@link fr.imta.fil.renter.Brew#getBrewers <em>Brewers</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Brewers</em>'.
-	 * @see fr.imta.fil.renter.Brew#getBrewers()
-	 * @see #getBrew()
-	 * @generated
-	 */
-	EReference getBrew_Brewers();
-
-	/**
-	 * Returns the meta object for class '{@link fr.imta.fil.renter.Brewer <em>Brewer</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Brewer</em>'.
-	 * @see fr.imta.fil.renter.Brewer
-	 * @generated
-	 */
-	EClass getBrewer();
+	EClass getManager();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -660,6 +1000,48 @@ public interface RenterPackage extends EPackage {
 		EReference RENTER__CLIENTS = eINSTANCE.getRenter_Clients();
 
 		/**
+		 * The meta object literal for the '{@link fr.imta.fil.renter.impl.ClientImpl <em>Client</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.imta.fil.renter.impl.ClientImpl
+		 * @see fr.imta.fil.renter.impl.RenterPackageImpl#getClient()
+		 * @generated
+		 */
+		EClass CLIENT = eINSTANCE.getClient();
+
+		/**
+		 * The meta object literal for the '<em><b>Id Client</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLIENT__ID_CLIENT = eINSTANCE.getClient_IdClient();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLIENT__NAME = eINSTANCE.getClient_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Birth Date</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLIENT__BIRTH_DATE = eINSTANCE.getClient_BirthDate();
+
+		/**
+		 * The meta object literal for the '<em><b>Rent</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CLIENT__RENT = eINSTANCE.getClient_Rent();
+
+		/**
 		 * The meta object literal for the '{@link fr.imta.fil.renter.impl.VehicleImpl <em>Vehicle</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -686,20 +1068,100 @@ public interface RenterPackage extends EPackage {
 		EAttribute VEHICLE__NAME = eINSTANCE.getVehicle_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Volume</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Holding Capacity</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute VEHICLE__VOLUME = eINSTANCE.getVehicle_Volume();
+		EAttribute VEHICLE__HOLDING_CAPACITY = eINSTANCE.getVehicle_HoldingCapacity();
 
 		/**
-		 * The meta object literal for the '<em><b>Brew</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Rent</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference VEHICLE__BREW = eINSTANCE.getVehicle_Brew();
+		EReference VEHICLE__RENT = eINSTANCE.getVehicle_Rent();
+
+		/**
+		 * The meta object literal for the '{@link fr.imta.fil.renter.impl.CarImpl <em>Car</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.imta.fil.renter.impl.CarImpl
+		 * @see fr.imta.fil.renter.impl.RenterPackageImpl#getCar()
+		 * @generated
+		 */
+		EClass CAR = eINSTANCE.getCar();
+
+		/**
+		 * The meta object literal for the '{@link fr.imta.fil.renter.impl.TruckImpl <em>Truck</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.imta.fil.renter.impl.TruckImpl
+		 * @see fr.imta.fil.renter.impl.RenterPackageImpl#getTruck()
+		 * @generated
+		 */
+		EClass TRUCK = eINSTANCE.getTruck();
+
+		/**
+		 * The meta object literal for the '{@link fr.imta.fil.renter.impl.PickUpImpl <em>Pick Up</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.imta.fil.renter.impl.PickUpImpl
+		 * @see fr.imta.fil.renter.impl.RenterPackageImpl#getPickUp()
+		 * @generated
+		 */
+		EClass PICK_UP = eINSTANCE.getPickUp();
+
+		/**
+		 * The meta object literal for the '{@link fr.imta.fil.renter.impl.RentImpl <em>Rent</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.imta.fil.renter.impl.RentImpl
+		 * @see fr.imta.fil.renter.impl.RenterPackageImpl#getRent()
+		 * @generated
+		 */
+		EClass RENT = eINSTANCE.getRent();
+
+		/**
+		 * The meta object literal for the '<em><b>Id Rent</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RENT__ID_RENT = eINSTANCE.getRent_IdRent();
+
+		/**
+		 * The meta object literal for the '<em><b>Start Date</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RENT__START_DATE = eINSTANCE.getRent_StartDate();
+
+		/**
+		 * The meta object literal for the '<em><b>End Date</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RENT__END_DATE = eINSTANCE.getRent_EndDate();
+
+		/**
+		 * The meta object literal for the '<em><b>Client</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RENT__CLIENT = eINSTANCE.getRent_Client();
+
+		/**
+		 * The meta object literal for the '<em><b>Vehicle</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RENT__VEHICLE = eINSTANCE.getRent_Vehicle();
 
 		/**
 		 * The meta object literal for the '{@link fr.imta.fil.renter.impl.EmployeeImpl <em>Employee</em>}' class.
@@ -736,64 +1198,14 @@ public interface RenterPackage extends EPackage {
 		EAttribute EMPLOYEE__BIRTH_DATE = eINSTANCE.getEmployee_BirthDate();
 
 		/**
-		 * The meta object literal for the '{@link fr.imta.fil.renter.impl.BrewImpl <em>Brew</em>}' class.
+		 * The meta object literal for the '{@link fr.imta.fil.renter.impl.ManagerImpl <em>Manager</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see fr.imta.fil.renter.impl.BrewImpl
-		 * @see fr.imta.fil.renter.impl.RenterPackageImpl#getBrew()
+		 * @see fr.imta.fil.renter.impl.ManagerImpl
+		 * @see fr.imta.fil.renter.impl.RenterPackageImpl#getManager()
 		 * @generated
 		 */
-		EClass BREW = eINSTANCE.getBrew();
-
-		/**
-		 * The meta object literal for the '<em><b>Id Brew</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute BREW__ID_BREW = eINSTANCE.getBrew_IdBrew();
-
-		/**
-		 * The meta object literal for the '<em><b>Recipe</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute BREW__RECIPE = eINSTANCE.getBrew_Recipe();
-
-		/**
-		 * The meta object literal for the '<em><b>Prod Quantity</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute BREW__PROD_QUANTITY = eINSTANCE.getBrew_ProdQuantity();
-
-		/**
-		 * The meta object literal for the '<em><b>Brew Date</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute BREW__BREW_DATE = eINSTANCE.getBrew_BrewDate();
-
-		/**
-		 * The meta object literal for the '<em><b>Brewers</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference BREW__BREWERS = eINSTANCE.getBrew_Brewers();
-
-		/**
-		 * The meta object literal for the '{@link fr.imta.fil.renter.impl.BrewerImpl <em>Brewer</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see fr.imta.fil.renter.impl.BrewerImpl
-		 * @see fr.imta.fil.renter.impl.RenterPackageImpl#getBrewer()
-		 * @generated
-		 */
-		EClass BREWER = eINSTANCE.getBrewer();
+		EClass MANAGER = eINSTANCE.getManager();
 
 	}
 
