@@ -1,0 +1,40 @@
+package fr.imta.fil.renter
+
+class Renter {
+	String name
+	//Date creationDate
+	// --- contains all the wrapped classes ---- //
+	contains Employee[*] employees
+	contains Vehicle[*] vehicles
+	contains Client[*] clients
+}
+
+// do not reuse 'contains' for the other classes but 'refers'
+// many = [*] ; one = []
+
+class Vehicle { // Beer -- one --> Brew
+	Integer idVehicle 
+	String name
+	Float volume
+	refers Brew[] brew
+}
+
+// TODO: create inheriting classes to Vehicle one to one
+
+class Employee {
+	String name
+	String firstName
+	Date birthDate
+}
+
+class Brew { // Brew -- many --> Brewers
+	Integer idBrew 
+	String recipe
+	Float prodQuantity
+	Date brewDate
+	refers Brewer[*] brewers
+}
+
+class Brewer extends Employee { // brasseur
+		
+}
