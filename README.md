@@ -1,6 +1,6 @@
 # Projet MDE -- Loueur de véhicules
 
-Modélisation d'une boutique de location de voitures par Fouillé Justine & Preka Bruno
+Modélisation d'une boutique de location de voitures par F. Justine & P. Bruno
 ## Structure
 
 
