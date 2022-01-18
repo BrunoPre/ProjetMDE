@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import fr.imta.fil.renter.Employee;
 import fr.imta.fil.renter.Renter;
 import fr.imta.fil.renter.RenterFactory;
+import fr.imta.fil.renter.RenterPackage;
 
 public class RentApp {
 	
@@ -46,9 +47,10 @@ public class RentApp {
 		System.out.println("---- Que souhaitez-vous faire ? ----");
 		System.out.println("(1) Ajouter un employé");
 		System.out.println("(2) Supprimer un employé");
-		System.out.println("(3) Ajouter un brassin");
-		System.out.println("(4) Ajouter une bière");
-		System.out.println("(5) Afficher la brasserie");
+		System.out.println("(3) Ajouter un véhicule");
+		System.out.println("(4) Ajouter un client");
+		System.out.println("(5) Créer une location");
+		System.out.println("(6) Afficher la boutique de location");
 
 		System.out.println("------------------------------------");
 		System.out.println("Faites votre choix :");
@@ -65,8 +67,7 @@ public class RentApp {
 		return e;
 	}
 	
-	// Returns `true` if the Employee is deleted
-	public static boolean cliRemoveEmployee(Renter renter, Scanner sc) {
+	public static void cliRemoveEmployee(Renter renter, Scanner sc) {
 		System.out.println("Prénom :");
 		String firstName = getInputString(sc);
 		System.out.println("Nom :");
@@ -81,8 +82,8 @@ public class RentApp {
 		}
 		if (isFoundDeleted)
 			System.out.println("Employé non trouvé.");
-		return isFoundDeleted;
 	}
+
 	
 	
 	public static void main(String[] args) {
@@ -101,40 +102,48 @@ public class RentApp {
 		boolean arret = false;
 		Random random = new Random();
 		
-		List<String> listBeers = Arrays.asList("IPA", "Heineken", "Chouffe");
 		while (!arret) {
 			int choice = displayChoicesAndGetNumber(sc);
+			
+			/* FEATURES to be implemented:
+			 * ajt un employé
+			 * suppr un employé
+			 * ajt un véhicule
+			 (* suppr un véhicule)
+			 * ajouter un client
+			 (* supprimer un client)
+			 * créer une location
+			 (* supprimer une location??)
+			 */
 			switch (choice) {
-				// ajt un employé, suppr un employé, ajt un brassin, ajt une biere, afficher la brasserie
+				// ajouter un employé
 				case 1:
 					Employee employee = cliSetEmployee(rentFactory, sc);
+					renter.getEmployees().add(employee);
 					break;
+				
+				// supprimer un employé
 				case 2:
-					boolean isRemoved = cliRemoveEmployee(renter, sc);
+					cliRemoveEmployee(renter, sc);
 					break;
 					
-					/// CONTINUE HERE ////
+				/**** CONTINUE HERE ****/
+					
+				// TODO: ajouter un véhicule
 				case 3:
-					Brew brew = brFactory.createBrew();
-					brew.setBrewDate(new Date());
-					brew.setIdBrew(random.nextInt(100));
-					System.out.println("Quantité : ");
-					brew.setProdQuantity(sc.nextFloat());
-					System.out.println("Choisir parmi les " + listBeers.size() + " bières suivantes : " + listBeers.toString());
-					int i = sc.nextInt();
-					brew.setRecipe(listBeers.get(i%listBeers.size()));
 					break;
+					
+				// TODO: ajouter un client
 				case 4:
-					Beer beer = brFactory.createBeer();
-					System.out.println("Nom de bière :");
-					beer.setName(sc.nextLine());
-					System.out.println("Description : ");
-					beer.setDescription(sc.nextLine());
-					System.out.println("Degré d'alcool :");
-					beer.setDegreeAlcohol(sc.nextFloat());
 					break;
+					
+				// TODO: créer une location
 				case 5:
-					System.out.println(br.toString());
+					break;
+					
+				// TODO: afficher la boutique
+				case 6:
+					System.out.println(renter.toString());
 					break;
 					
 				case 9:
@@ -151,8 +160,8 @@ public class RentApp {
 					);
 					// Enregistrement de notre métamodèle dans la liste des métamodèles connus
 					rs.getPackageRegistry().put(
-					    BreweryPackage.eNS_URI,
-					    BreweryPackage.eINSTANCE
+					    RenterPackage.eNS_URI,
+					    RenterPackage.eINSTANCE
 					);
 					
 					// Création de la ressource avec un chemin de fichier où sauvegarder le modèle
@@ -160,10 +169,10 @@ public class RentApp {
 					// attention, URI -> org.eclipse.emf.common.util.URI
 					
 					// notre modèle que l'on a créé avec la factory 
-					Brewery racineModeleBrewery = (Brewery)(resource.getContents().get(0));
+					Renter racineModeleRenter = (Renter)(resource.getContents().get(0));
 					
 					// on ajoute notre modèle dans la ressource
-					resource.getContents().add(racineModeleBrewery);
+					resource.getContents().add(racineModeleRenter);
 
 					// la méthode save de la Resource accepte une map contenant les options de sérialisation
 					try {
@@ -178,7 +187,7 @@ public class RentApp {
 					// true indique que l'on force le chargement de la resource maintenant
 
 					// Je pars du principe que la classe Brewery est la racine de notre modèle
-					Brewery racineBrewery = (Brewery)(resource.getContents().get(0));
+					Renter racineRenter = (Renter)(resource.getContents().get(0));
 					
 					break;
 					
