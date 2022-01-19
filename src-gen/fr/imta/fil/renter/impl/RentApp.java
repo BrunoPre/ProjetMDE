@@ -16,16 +16,19 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
+import fr.imta.fil.renter.Car;
 import fr.imta.fil.renter.Employee;
+import fr.imta.fil.renter.Manager;
 import fr.imta.fil.renter.Renter;
 import fr.imta.fil.renter.RenterFactory;
 import fr.imta.fil.renter.RenterPackage;
+import fr.imta.fil.renter.Vehicle;
 
 public class RentApp {
 	
 	public static String getInputString(Scanner sc) {
 		try{
-            String input = sc.nextLine();
+            String input = sc.next();
             return input;
         } catch(InputMismatchException e){
             System.out.println("Erreur : " + e.getMessage());
@@ -36,6 +39,16 @@ public class RentApp {
 	public static int getInputInt(Scanner sc) {
 		try{
             int input = sc.nextInt();
+            return input;
+        } catch(InputMismatchException e){
+            System.out.println("Erreur : " + e.getMessage());
+            return -1;
+        }
+	}
+	
+	public static float getInputFloat(Scanner sc) {
+		try{
+            float input = sc.nextFloat();
             return input;
         } catch(InputMismatchException e){
             System.out.println("Erreur : " + e.getMessage());
@@ -60,6 +73,18 @@ public class RentApp {
 	public static Employee cliSetEmployee(RenterFactory rf, Scanner sc) {
 		Employee e = rf.createEmployee();
 		System.out.println("Nom :");
+		String name = getInputString(sc);
+		e.setName(name);
+		System.out.println("Prénom :");
+		String firstName = getInputString(sc);
+		e.setFirstName(firstName);
+		e.setBirthDate(new Date());
+		return e;
+	}
+	
+	public static Manager cliSetManager(RenterFactory rf, Scanner sc) {
+		Manager e = rf.createManager();
+		System.out.println("Nom :");
 		e.setName(getInputString(sc));
 		System.out.println("Prénom :");
 		e.setFirstName(getInputString(sc));
@@ -83,6 +108,18 @@ public class RentApp {
 		if (isFoundDeleted)
 			System.out.println("Employé non trouvé.");
 	}
+	
+	public static Vehicle cliSetVehicle(RenterFactory rf, Scanner sc) {
+		System.out.println("Nom :");
+		String name = getInputString(sc);
+		System.out.println("Capacité :");
+		float capa = getInputFloat(sc);
+		Vehicle v = rf.createVehicle();
+		v.setName(name);
+		v.setHoldingCapacity(capa);
+		v.setIdVehicle((new Random()).nextInt());
+		return v;
+	}
 
 	
 	
@@ -93,14 +130,17 @@ public class RentApp {
 		
 		Scanner sc = new Scanner(System.in);
 		
+		// set name of the shop
 		System.out.println("Donner un nom à la boutique:");
-		String input = sc.nextLine();
+		String input = sc.next();
 		renter.setName(input);
 		
+		// set new manager
 		System.out.println("Qui est le nouveau manager ?");
+		Manager manager = cliSetManager(rentFactory, sc);
+		renter.getEmployees().add(manager);
 		
 		boolean arret = false;
-		Random random = new Random();
 		
 		while (!arret) {
 			int choice = displayChoicesAndGetNumber(sc);
@@ -131,6 +171,10 @@ public class RentApp {
 					
 				// TODO: ajouter un véhicule
 				case 3:
+					System.out.println("Type de véhicule (voiture/camion/pickup):");
+					String typeVehicle = getInputString(sc);
+					if (typeVehicle.equals("voiture"))
+						renter.getVehicles().add((Car) v);
 					break;
 					
 				// TODO: ajouter un client
@@ -141,12 +185,16 @@ public class RentApp {
 				case 5:
 					break;
 					
-				// TODO: afficher la boutique
+				// afficher la boutique
 				case 6:
-					System.out.println(renter.toString());
+					System.out.println("Nom : "  +renter.getName());
+					System.out.println("Employés : " + renter.getEmployees());
+					System.out.println("Véhicules : " + renter.getVehicles());
+					System.out.println("Clients : " + renter.getClients());
 					break;
 					
 				case 9:
+					/*
 					arret = true;
 					// put the following in a constructor?
 					// ------ ResourceSet part ----------------- //
@@ -190,6 +238,7 @@ public class RentApp {
 					Renter racineRenter = (Renter)(resource.getContents().get(0));
 					
 					break;
+					*/
 					
 			}
 			
