@@ -206,6 +206,15 @@ public class RenterPackageImpl extends EPackageImpl implements RenterPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getRenter_Rents() {
+		return (EReference)renterEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getClient() {
 		return clientEClass;
 	}
@@ -233,7 +242,7 @@ public class RenterPackageImpl extends EPackageImpl implements RenterPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getClient_BirthDate() {
+	public EAttribute getClient_PhoneNumber() {
 		return (EAttribute)clientEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -242,8 +251,17 @@ public class RenterPackageImpl extends EPackageImpl implements RenterPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getClient_BirthDate() {
+		return (EAttribute)clientEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getClient_Rent() {
-		return (EReference)clientEClass.getEStructuralFeatures().get(3);
+		return (EReference)clientEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -450,10 +468,12 @@ public class RenterPackageImpl extends EPackageImpl implements RenterPackage {
 		createEReference(renterEClass, RENTER__EMPLOYEES);
 		createEReference(renterEClass, RENTER__VEHICLES);
 		createEReference(renterEClass, RENTER__CLIENTS);
+		createEReference(renterEClass, RENTER__RENTS);
 
 		clientEClass = createEClass(CLIENT);
 		createEAttribute(clientEClass, CLIENT__ID_CLIENT);
 		createEAttribute(clientEClass, CLIENT__NAME);
+		createEAttribute(clientEClass, CLIENT__PHONE_NUMBER);
 		createEAttribute(clientEClass, CLIENT__BIRTH_DATE);
 		createEReference(clientEClass, CLIENT__RENT);
 
@@ -526,10 +546,12 @@ public class RenterPackageImpl extends EPackageImpl implements RenterPackage {
 		initEReference(getRenter_Employees(), this.getEmployee(), null, "employees", null, 0, -1, Renter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRenter_Vehicles(), this.getVehicle(), null, "vehicles", null, 0, -1, Renter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRenter_Clients(), this.getClient(), null, "clients", null, 0, -1, Renter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRenter_Rents(), this.getRent(), null, "rents", null, 0, -1, Renter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(clientEClass, Client.class, "Client", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getClient_IdClient(), theEcorePackage.getEIntegerObject(), "idClient", null, 0, 1, Client.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getClient_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Client.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getClient_PhoneNumber(), theEcorePackage.getEIntegerObject(), "phoneNumber", null, 0, 1, Client.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getClient_BirthDate(), theEcorePackage.getEDate(), "birthDate", null, 0, 1, Client.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getClient_Rent(), this.getRent(), null, "rent", null, 0, -1, Client.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

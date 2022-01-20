@@ -4,6 +4,7 @@ package fr.imta.fil.renter.impl;
 
 import fr.imta.fil.renter.Client;
 import fr.imta.fil.renter.Employee;
+import fr.imta.fil.renter.Rent;
 import fr.imta.fil.renter.Renter;
 import fr.imta.fil.renter.RenterPackage;
 import fr.imta.fil.renter.Vehicle;
@@ -36,6 +37,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.imta.fil.renter.impl.RenterImpl#getEmployees <em>Employees</em>}</li>
  *   <li>{@link fr.imta.fil.renter.impl.RenterImpl#getVehicles <em>Vehicles</em>}</li>
  *   <li>{@link fr.imta.fil.renter.impl.RenterImpl#getClients <em>Clients</em>}</li>
+ *   <li>{@link fr.imta.fil.renter.impl.RenterImpl#getRents <em>Rents</em>}</li>
  * </ul>
  *
  * @generated
@@ -90,6 +92,16 @@ public class RenterImpl extends MinimalEObjectImpl.Container implements Renter {
 	 * @ordered
 	 */
 	protected EList<Client> clients;
+
+	/**
+	 * The cached value of the '{@link #getRents() <em>Rents</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRents()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Rent> rents;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -172,6 +184,18 @@ public class RenterImpl extends MinimalEObjectImpl.Container implements Renter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Rent> getRents() {
+		if (rents == null) {
+			rents = new EObjectContainmentEList<Rent>(Rent.class, this, RenterPackage.RENTER__RENTS);
+		}
+		return rents;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -181,6 +205,8 @@ public class RenterImpl extends MinimalEObjectImpl.Container implements Renter {
 				return ((InternalEList<?>)getVehicles()).basicRemove(otherEnd, msgs);
 			case RenterPackage.RENTER__CLIENTS:
 				return ((InternalEList<?>)getClients()).basicRemove(otherEnd, msgs);
+			case RenterPackage.RENTER__RENTS:
+				return ((InternalEList<?>)getRents()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -201,6 +227,8 @@ public class RenterImpl extends MinimalEObjectImpl.Container implements Renter {
 				return getVehicles();
 			case RenterPackage.RENTER__CLIENTS:
 				return getClients();
+			case RenterPackage.RENTER__RENTS:
+				return getRents();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -229,6 +257,10 @@ public class RenterImpl extends MinimalEObjectImpl.Container implements Renter {
 				getClients().clear();
 				getClients().addAll((Collection<? extends Client>)newValue);
 				return;
+			case RenterPackage.RENTER__RENTS:
+				getRents().clear();
+				getRents().addAll((Collection<? extends Rent>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -253,6 +285,9 @@ public class RenterImpl extends MinimalEObjectImpl.Container implements Renter {
 			case RenterPackage.RENTER__CLIENTS:
 				getClients().clear();
 				return;
+			case RenterPackage.RENTER__RENTS:
+				getRents().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -273,6 +308,8 @@ public class RenterImpl extends MinimalEObjectImpl.Container implements Renter {
 				return vehicles != null && !vehicles.isEmpty();
 			case RenterPackage.RENTER__CLIENTS:
 				return clients != null && !clients.isEmpty();
+			case RenterPackage.RENTER__RENTS:
+				return rents != null && !rents.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

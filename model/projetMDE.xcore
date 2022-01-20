@@ -7,6 +7,7 @@ class Renter {
 	contains Employee[*] employees
 	contains Vehicle[*] vehicles
 	contains Client[*] clients
+	contains Rent[*] rents
 }
 
 // do not reuse 'contains' for the other classes but 'refers'
@@ -17,6 +18,7 @@ class Renter {
 class Client { // Client --one--> Vehicle (only 0/1 Client can rent a vehicle)
 	Integer idClient
 	String name
+	Integer phoneNumber
 	Date birthDate
 	refers Rent[] rent
 }
