@@ -195,10 +195,11 @@ public class RentApp {
 					System.out.println("Clients : " + renter.getClients());
 					break;
 					
+				// sauvegarder dans un modèle
 				case 9:
 					/*
 					arret = true;
-					// put the following in a constructor?
+
 					// ------ ResourceSet part ----------------- //
 					ResourceSet rs = new ResourceSetImpl();
 					
@@ -238,9 +239,12 @@ public class RentApp {
 
 					// Je pars du principe que la classe Brewery est la racine de notre modèle
 					Renter racineRenter = (Renter)(resource.getContents().get(0));
-					
-					break;
 					*/
+					break;
+				
+				default:
+					System.out.println("Choix invalide, veuillez réessayer.");
+					break;
 					
 			}
 			
