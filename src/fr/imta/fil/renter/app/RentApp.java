@@ -1,4 +1,4 @@
-package fr.imta.fil.renter.impl;
+package fr.imta.fil.renter.app;
 
 
 import java.io.IOException;
