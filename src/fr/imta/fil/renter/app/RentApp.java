@@ -1,4 +1,4 @@
-package fr.imta.fil.renter.impl;
+package fr.imta.fil.renter.app;
 
 
 import java.io.IOException;
@@ -171,10 +171,12 @@ public class RentApp {
 					
 				// TODO: ajouter un véhicule
 				case 3:
+					/*
 					System.out.println("Type de véhicule (voiture/camion/pickup):");
 					String typeVehicle = getInputString(sc);
 					if (typeVehicle.equals("voiture"))
 						renter.getVehicles().add((Car) v);
+						*/
 					break;
 					
 				// TODO: ajouter un client
