@@ -13,13 +13,14 @@ Modélisation d'une boutique de location de voitures par F. Justine & P. Bruno
 
 #### Format du rendu
 Un readme, document PDF avec :
-une rapide présentation du projet et sa structure
-une description précise du système modélisé
-une breve explication de comment utiliser le programme de gestion
+- une rapide présentation du projet et sa structure
+- une description précise du système modélisé
+- une breve explication de comment utiliser le programme de gestion
+
 Le ou les projets java contenant :
-le méta-modèle
-le code permettant la gestion de modèles
-plusieurs modèles d'exemples à charger
+- le méta-modèle
+- le code permettant la gestion de modèles
+- plusieurs modèles d'exemples à charger
 
 ### Points clefs du projet :
 - description textuelle d'un système

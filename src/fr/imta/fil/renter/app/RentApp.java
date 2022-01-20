@@ -40,7 +40,7 @@ public class RentApp {
 		try{
             int input = sc.nextInt();
             return input;
-        } catch(InputMismatchException e){
+        } catch(Exception e){
             System.out.println("Erreur : " + e.getMessage());
             return -1;
         }
@@ -64,7 +64,10 @@ public class RentApp {
 		System.out.println("(4) Ajouter un client");
 		System.out.println("(5) Créer une location");
 		System.out.println("(6) Afficher la boutique de location");
-
+		System.out.println("(8) Charger un modèle");
+		System.out.println("(9) Sauvegarder la boutique dans un modèle et quitter le programme");
+		System.out.println("(10) Créer/Remplacer un manager");
+		System.out.println("(11) (Re)nommer la boutique");
 		System.out.println("------------------------------------");
 		System.out.println("Faites votre choix :");
 		return getInputInt(sc);
@@ -127,34 +130,31 @@ public class RentApp {
 		RenterFactory rentFactory = RenterFactory.eINSTANCE;
 		Renter renter = rentFactory.createRenter();
 		
+		/***** Configuration du ResourceSet ****/
 		
+		ResourceSet rs = new ResourceSetImpl();
+		// Mapping entre l'extension du fichier du modèle et le format de sérialisation (xmi)
+		rs.getResourceFactoryRegistry().getExtensionToFactoryMap().put(
+		    "xmi",
+		    new XMIResourceFactoryImpl()
+		);
+		// Enregistrement de notre métamodèle dans la liste des métamodèles connus
+		rs.getPackageRegistry().put(
+		    RenterPackage.eNS_URI,
+		    RenterPackage.eINSTANCE
+		);
+		
+		
+		/** Scanner **/
 		Scanner sc = new Scanner(System.in);
 		
-		// set name of the shop
-		System.out.println("Donner un nom à la boutique:");
-		String input = sc.next();
-		renter.setName(input);
-		
-		// set new manager
-		System.out.println("Qui est le nouveau manager ?");
-		Manager manager = cliSetManager(rentFactory, sc);
-		renter.getEmployees().add(manager);
 		
 		boolean arret = false;
+		System.out.println("Bienvenue dans le programme de location de véhicules !");
 		
 		while (!arret) {
 			int choice = displayChoicesAndGetNumber(sc);
-			
-			/* FEATURES to be implemented:
-			 * ajt un employé
-			 * suppr un employé
-			 * ajt un véhicule
-			 (* suppr un véhicule)
-			 * ajouter un client
-			 (* supprimer un client)
-			 * créer une location
-			 (* supprimer une location??)
-			 */
+
 			switch (choice) {
 				// ajouter un employé
 				case 1:
@@ -195,32 +195,41 @@ public class RentApp {
 					System.out.println("Clients : " + renter.getClients());
 					break;
 					
-				// sauvegarder dans un modèle
+				// charger un modèle existant
+				case 8:
+					System.out.println("AVERTISSEMENT : Ceci va remplacer le modèle actuellement chargé et les données non sauvegardées seront perdues.");
+					System.out.println("Donner le nom du fichier modèle à charger :");
+					String fileNameLoad = getInputString(sc);
+
+					// création d'une resource à partir d'un fichier existant
+					try {
+					Resource resourceFromExistent = rs.getResource(URI.createFileURI(fileNameLoad), true); // `true` == "load now"
+					// true indique que l'on force le chargement de la resource maintenant
+
+					// Je pars du principe que la classe Renter est la racine de notre modèle
+					renter = (Renter)(resourceFromExistent.getContents().get(0));
+					} catch (Exception e) {
+						System.out.println("erreur : le fichier n'existe pas :" + e.getMessage());
+					}
+					
+					break;
+					
+				// quitter & sauvegarder dans un modèle
 				case 9:
-					/*
+					
 					arret = true;
 
 					// ------ ResourceSet part ----------------- //
-					ResourceSet rs = new ResourceSetImpl();
+					System.out.println("Donner un nom au fichier :");
+					String fileNameSave = getInputString(sc);
 					
-					
-					// Mapping entre l'extension du fichier du modèle et le format de sérialisation (xmi)
-					rs.getResourceFactoryRegistry().getExtensionToFactoryMap().put(
-					    "xmi",
-					    new XMIResourceFactoryImpl()
-					);
-					// Enregistrement de notre métamodèle dans la liste des métamodèles connus
-					rs.getPackageRegistry().put(
-					    RenterPackage.eNS_URI,
-					    RenterPackage.eINSTANCE
-					);
 					
 					// Création de la ressource avec un chemin de fichier où sauvegarder le modèle
-					Resource resource = rs.createResource(URI.createFileURI("modele_brewery.xmi"));
+					Resource resource = rs.createResource(URI.createFileURI(fileNameSave + ".xmi"));
 					// attention, URI -> org.eclipse.emf.common.util.URI
 					
 					// notre modèle que l'on a créé avec la factory 
-					Renter racineModeleRenter = (Renter)(resource.getContents().get(0));
+					Renter racineModeleRenter = renter;
 					
 					// on ajoute notre modèle dans la ressource
 					resource.getContents().add(racineModeleRenter);
@@ -228,18 +237,34 @@ public class RentApp {
 					// la méthode save de la Resource accepte une map contenant les options de sérialisation
 					try {
 						resource.save(Collections.EMPTY_MAP); // en pratique : passer une map vide
+						System.out.println("Modèle sauvegardé.");
 					}
 					catch (IOException exception) {
 						System.out.println("erreur durant la sauvegarde du modèle : " + exception.getMessage());
 					}
 					
-					// création d'une resource à partir d'un fichier existant
-					Resource resourceFromExistent = rs.getResource(URI.createFileURI("modele_brewery.xmi"), true); // `true` == "load now"
-					// true indique que l'on force le chargement de la resource maintenant
-
-					// Je pars du principe que la classe Brewery est la racine de notre modèle
-					Renter racineRenter = (Renter)(resource.getContents().get(0));
-					*/
+					break;
+					
+				// ajouter un manager
+				case 10:
+					// remove any existing Manager (not the cleanest way; system model should map the Renter to the Manager)
+					for(Employee emp : renter.getEmployees()) {
+						if (emp instanceof Manager) {
+							System.out.println("Le manager précédent a été retiré de la boutique.");
+							renter.getEmployees().remove(emp);
+							break;
+						}
+					}
+					System.out.println("Qui est le nouveau manager ?");
+					Manager manager = cliSetManager(rentFactory, sc);
+					renter.getEmployees().add(manager);
+					break;
+					
+				// donner un nom à la boutique
+				case 11:
+					System.out.println("Donner un nom à la boutique:");
+					String input = sc.next();
+					renter.setName(input);
 					break;
 				
 				default:
@@ -249,6 +274,7 @@ public class RentApp {
 			}
 			
 		}
+		System.out.println("Fin du programme.");
 		sc.close();
 		
 	}

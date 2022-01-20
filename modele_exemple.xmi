@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="ASCII"?>
+<renter:Renter xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:renter="fr.imta.fil.renter" name="adad">
+  <employees xsi:type="renter:Manager" name="ad" firstName="da" birthDate="2022-01-20T20:32:29.357+0100"/>
+</renter:Renter>
