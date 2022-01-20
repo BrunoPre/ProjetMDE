@@ -17,12 +17,15 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
 import fr.imta.fil.renter.Car;
+import fr.imta.fil.renter.Client;
 import fr.imta.fil.renter.Employee;
 import fr.imta.fil.renter.Manager;
+import fr.imta.fil.renter.Rent;
 import fr.imta.fil.renter.Renter;
 import fr.imta.fil.renter.RenterFactory;
 import fr.imta.fil.renter.RenterPackage;
 import fr.imta.fil.renter.Vehicle;
+
 
 public class RentApp {
 	
@@ -82,6 +85,28 @@ public class RentApp {
 		return e;
 	}
 	
+	public static Client cliSetClient(RenterFactory rf, Scanner sc) {
+		Client c = rf.createClient();
+		System.out.println("Nom :");
+		String name = getInputString(sc);
+		c.setName(name);
+		c.setBirthDate(new Date());
+		c.setIdClient(generateId());
+		return c;
+	}
+	
+	public static Rent cliSetRent(RenterFactory rf, Scanner sc) {
+		
+		Rent r = rf.createRent();
+		System.out.println("Nom :");
+		String name = getInputString(sc);
+		r.setStartDate(null);
+		r.setEndDate(null);
+		r.setIdRent(generateId());
+		
+		return r;
+	}
+	
 	public static Manager cliSetManager(RenterFactory rf, Scanner sc) {
 		Manager e = rf.createManager();
 		System.out.println("Nom :");
@@ -90,6 +115,11 @@ public class RentApp {
 		e.setFirstName(getInputString(sc));
 		e.setBirthDate(new Date());
 		return e;
+	}
+	
+	public static Integer generateId() {
+		Random rd = new Random(); 
+		return rd.nextInt() ;
 	}
 	
 	public static void cliRemoveEmployee(Renter renter, Scanner sc) {
@@ -171,18 +201,27 @@ public class RentApp {
 					
 				// TODO: ajouter un véhicule
 				case 3:
+					/*
 					System.out.println("Type de véhicule (voiture/camion/pickup):");
 					String typeVehicle = getInputString(sc);
-					if (typeVehicle.equals("voiture"))
+					if (typeVehicle.equals("voiture")) {
+						Vehicle v = cliSetVehicle(rentFactory, sc);
 						renter.getVehicles().add((Car) v);
+					}*/
+						
 					break;
+						
 					
 				// TODO: ajouter un client
 				case 4:
+					Client client = cliSetClient(rentFactory, sc);
+					renter.getClients().add(client);
 					break;
+					
 					
 				// TODO: créer une location
 				case 5:
+					
 					break;
 					
 				// afficher la boutique
