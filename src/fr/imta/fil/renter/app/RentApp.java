@@ -163,16 +163,8 @@ public class RentApp {
 	public static void cliRemoveVehicle(Renter renter, Scanner sc) {
 		System.out.println("Id du véhicule :");
 		int id = getInputInt(sc);
-		boolean isFoundDeleted = false;
-		for (Vehicle vehicle : renter.getVehicles()) {
-			if (vehicle.getIdVehicle() == id) {
-				renter.getVehicles().remove(vehicle);
-				isFoundDeleted = true;
-				System.out.println("Véhicule supprimé !");
-			}
-		}
-		if (!isFoundDeleted)
-			System.out.println("Véhicule non trouvé.");
+		boolean isFoundDeleted = renter.getVehicles().removeIf(vehicle -> (vehicle.getIdVehicle() == id));
+		System.out.println(isFoundDeleted ? "Véhicule supprimé !" : "Véhicule non trouvé.");
 	}
 	
 	public static Client findClient(Renter renter, Scanner sc) {
