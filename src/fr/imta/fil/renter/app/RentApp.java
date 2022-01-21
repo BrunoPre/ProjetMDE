@@ -101,7 +101,7 @@ public class RentApp {
 		c.setName(name);
 		c.setPhoneNumber(phoneNumber);
 		c.setBirthDate(new Date());
-		c.setIdClient((new Random()).nextInt());
+		c.setIdClient((new Random()).nextInt(Integer.MAX_VALUE));
 		return c;
 	}
 	
@@ -110,7 +110,7 @@ public class RentApp {
 		Rent r = rf.createRent();
 		r.setStartDate(null);
 		r.setEndDate(null);
-		r.setIdRent((new Random()).nextInt());
+		r.setIdRent((new Random()).nextInt(Integer.MAX_VALUE));
 		
 		return r;
 	}
@@ -145,19 +145,11 @@ public class RentApp {
 	
 	public static void cliRemoveClient(Renter renter, Scanner sc) {
 
-		System.out.println("Nom :");
-		String name = getInputString(sc);
-		boolean isFoundDeleted = false;
-		for (Client client : renter.getClients()) {
-			if (client.getName() == name) {
-				System.out.println(client.getName());
-				renter.getClients().remove(client);
-				isFoundDeleted = true;
-				System.out.println("Client supprimé !");
-			}
-		}
-		if (!isFoundDeleted)
-			System.out.println("Client non trouvé.");
+		System.out.println("Id du client :");
+		int id = getInputInt(sc);
+		boolean isFoundDeleted = renter.getClients().removeIf(client -> (client.getIdClient() == id));
+		System.out.println(isFoundDeleted ? "Client supprimé !" : "Client non trouvé.");
+		
 	}
 	
 	public static void cliRemoveVehicle(Renter renter, Scanner sc) {
@@ -167,40 +159,33 @@ public class RentApp {
 		System.out.println(isFoundDeleted ? "Véhicule supprimé !" : "Véhicule non trouvé.");
 	}
 	
-	public static Client findClient(Renter renter, Scanner sc) {
-		Client cli = null ;
+	public static Client findClient(Renter renter, Scanner sc) {		
 		System.out.println("Nom :");
 		String name = getInputString(sc);
 		System.out.println("Numéro de téléphone :");
 		int phonenumber = getInputInt(sc);
-		boolean isFoundDeleted = false;
+		
 		for (Client client : renter.getClients()) {
-			if (client.getName() == name && client.getPhoneNumber() == phonenumber) {
-				cli = client ;
-				isFoundDeleted = true;
-			}
-		}
-		if (!isFoundDeleted) {
-			System.out.println("Client non trouvé. Veuillez enregistrer un client.");		
-		}
-		return cli ;
+	        if ((client.getName().equals(name)) && (client.getPhoneNumber().equals(phonenumber))) {
+	            return client;
+	        }
+	    }
+	    return null;
 	}
 	
 	
 	public static Vehicle findVehicle(Renter renter, Scanner sc) {
-		Vehicle v = null ;
+		
 		System.out.println("Id du véhicule :");
 		int id = getInputInt(sc);
-		boolean isFoundDeleted = false;
-		for (Vehicle vehicle : renter.getVehicles()) {
-			if (vehicle.getIdVehicle() == id) {
-				v = vehicle ;
-				isFoundDeleted = true;
-			}
-		}
-		if (!isFoundDeleted)
-			System.out.println("Véhicule non trouvé. Veuillez ajouter un véhicule");
-		return v ;
+		
+		for (Vehicle v : renter.getVehicles()) {
+	        if ((v.getIdVehicle().equals(id))) {
+	            return v;
+	        }
+	    }
+	    return null;
+		
 	}
 	
 	
@@ -212,7 +197,7 @@ public class RentApp {
 		System.out.println("Capacité :");
 		float capa = getInputFloat(sc);
 		c.setHoldingCapacity(capa);
-		c.setIdVehicle((new Random()).nextInt());
+		c.setIdVehicle((new Random()).nextInt(Integer.MAX_VALUE));
 		System.out.println(c.toString());
 		c.toString();
 		return c;
@@ -226,7 +211,7 @@ public class RentApp {
 		Truck t = rf.createTruck();
 		t.setName(name);
 		t.setHoldingCapacity(capa);
-		t.setIdVehicle((new Random()).nextInt());
+		t.setIdVehicle((new Random()).nextInt(Integer.MAX_VALUE));
 		t.toString();
 		return t;
 	}
@@ -239,7 +224,7 @@ public class RentApp {
 		PickUp p = rf.createPickUp();
 		p.setName(name);
 		p.setHoldingCapacity(capa);
-		p.setIdVehicle((new Random()).nextInt());
+		p.setIdVehicle((new Random()).nextInt(Integer.MAX_VALUE));
 		p.toString();
 		return p;
 	}
@@ -341,12 +326,14 @@ public class RentApp {
 					if (clientToAdd != null) {
 						rent.getClient().add(clientToAdd);
 					} else {
-						
+						System.out.println("Client non trouvé ! Il faut créer un client pour ajouter une location.");
 					}
 					System.out.println("Ajout d'une voiture pour la location !");
 					Vehicle vehicleToAdd = findVehicle(renter, sc);
 					if (vehicleToAdd != null) {
 						rent.getVehicle().add(vehicleToAdd);
+					} else {
+						System.out.println("Véhicule non trouvé ! Il faut créer un véhicule pour ajouter une location.");
 					}
 					break;
 					
