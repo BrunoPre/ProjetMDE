@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * <ul>
  *   <li>{@link fr.imta.fil.renter.impl.ClientImpl#getIdClient <em>Id Client</em>}</li>
  *   <li>{@link fr.imta.fil.renter.impl.ClientImpl#getName <em>Name</em>}</li>
+ *   <li>{@link fr.imta.fil.renter.impl.ClientImpl#getPhoneNumber <em>Phone Number</em>}</li>
  *   <li>{@link fr.imta.fil.renter.impl.ClientImpl#getBirthDate <em>Birth Date</em>}</li>
  *   <li>{@link fr.imta.fil.renter.impl.ClientImpl#getRent <em>Rent</em>}</li>
  * </ul>
@@ -76,6 +77,26 @@ public class ClientImpl extends MinimalEObjectImpl.Container implements Client {
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getPhoneNumber() <em>Phone Number</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPhoneNumber()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Integer PHONE_NUMBER_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getPhoneNumber() <em>Phone Number</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPhoneNumber()
+	 * @generated
+	 * @ordered
+	 */
+	protected Integer phoneNumber = PHONE_NUMBER_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getBirthDate() <em>Birth Date</em>}' attribute.
@@ -173,6 +194,27 @@ public class ClientImpl extends MinimalEObjectImpl.Container implements Client {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Integer getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPhoneNumber(Integer newPhoneNumber) {
+		Integer oldPhoneNumber = phoneNumber;
+		phoneNumber = newPhoneNumber;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RenterPackage.CLIENT__PHONE_NUMBER, oldPhoneNumber, phoneNumber));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Date getBirthDate() {
 		return birthDate;
 	}
@@ -213,6 +255,8 @@ public class ClientImpl extends MinimalEObjectImpl.Container implements Client {
 				return getIdClient();
 			case RenterPackage.CLIENT__NAME:
 				return getName();
+			case RenterPackage.CLIENT__PHONE_NUMBER:
+				return getPhoneNumber();
 			case RenterPackage.CLIENT__BIRTH_DATE:
 				return getBirthDate();
 			case RenterPackage.CLIENT__RENT:
@@ -235,6 +279,9 @@ public class ClientImpl extends MinimalEObjectImpl.Container implements Client {
 				return;
 			case RenterPackage.CLIENT__NAME:
 				setName((String)newValue);
+				return;
+			case RenterPackage.CLIENT__PHONE_NUMBER:
+				setPhoneNumber((Integer)newValue);
 				return;
 			case RenterPackage.CLIENT__BIRTH_DATE:
 				setBirthDate((Date)newValue);
@@ -261,6 +308,9 @@ public class ClientImpl extends MinimalEObjectImpl.Container implements Client {
 			case RenterPackage.CLIENT__NAME:
 				setName(NAME_EDEFAULT);
 				return;
+			case RenterPackage.CLIENT__PHONE_NUMBER:
+				setPhoneNumber(PHONE_NUMBER_EDEFAULT);
+				return;
 			case RenterPackage.CLIENT__BIRTH_DATE:
 				setBirthDate(BIRTH_DATE_EDEFAULT);
 				return;
@@ -283,6 +333,8 @@ public class ClientImpl extends MinimalEObjectImpl.Container implements Client {
 				return ID_CLIENT_EDEFAULT == null ? idClient != null : !ID_CLIENT_EDEFAULT.equals(idClient);
 			case RenterPackage.CLIENT__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case RenterPackage.CLIENT__PHONE_NUMBER:
+				return PHONE_NUMBER_EDEFAULT == null ? phoneNumber != null : !PHONE_NUMBER_EDEFAULT.equals(phoneNumber);
 			case RenterPackage.CLIENT__BIRTH_DATE:
 				return BIRTH_DATE_EDEFAULT == null ? birthDate != null : !BIRTH_DATE_EDEFAULT.equals(birthDate);
 			case RenterPackage.CLIENT__RENT:
@@ -305,6 +357,8 @@ public class ClientImpl extends MinimalEObjectImpl.Container implements Client {
 		result.append(idClient);
 		result.append(", name: ");
 		result.append(name);
+		result.append(", phoneNumber: ");
+		result.append(phoneNumber);
 		result.append(", birthDate: ");
 		result.append(birthDate);
 		result.append(')');

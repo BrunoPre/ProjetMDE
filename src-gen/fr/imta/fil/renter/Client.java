@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link fr.imta.fil.renter.Client#getIdClient <em>Id Client</em>}</li>
  *   <li>{@link fr.imta.fil.renter.Client#getName <em>Name</em>}</li>
+ *   <li>{@link fr.imta.fil.renter.Client#getPhoneNumber <em>Phone Number</em>}</li>
  *   <li>{@link fr.imta.fil.renter.Client#getBirthDate <em>Birth Date</em>}</li>
  *   <li>{@link fr.imta.fil.renter.Client#getRent <em>Rent</em>}</li>
  * </ul>
@@ -71,6 +72,28 @@ public interface Client extends EObject {
 	 * @generated
 	 */
 	void setName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Phone Number</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Phone Number</em>' attribute.
+	 * @see #setPhoneNumber(Integer)
+	 * @see fr.imta.fil.renter.RenterPackage#getClient_PhoneNumber()
+	 * @model unique="false"
+	 * @generated
+	 */
+	Integer getPhoneNumber();
+
+	/**
+	 * Sets the value of the '{@link fr.imta.fil.renter.Client#getPhoneNumber <em>Phone Number</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Phone Number</em>' attribute.
+	 * @see #getPhoneNumber()
+	 * @generated
+	 */
+	void setPhoneNumber(Integer value);
 
 	/**
 	 * Returns the value of the '<em><b>Birth Date</b></em>' attribute.

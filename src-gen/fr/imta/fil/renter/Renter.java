@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.imta.fil.renter.Renter#getEmployees <em>Employees</em>}</li>
  *   <li>{@link fr.imta.fil.renter.Renter#getVehicles <em>Vehicles</em>}</li>
  *   <li>{@link fr.imta.fil.renter.Renter#getClients <em>Clients</em>}</li>
+ *   <li>{@link fr.imta.fil.renter.Renter#getRents <em>Rents</em>}</li>
  * </ul>
  *
  * @see fr.imta.fil.renter.RenterPackage#getRenter()
@@ -83,5 +84,17 @@ public interface Renter extends EObject {
 	 * @generated
 	 */
 	EList<Client> getClients();
+
+	/**
+	 * Returns the value of the '<em><b>Rents</b></em>' containment reference list.
+	 * The list contents are of type {@link fr.imta.fil.renter.Rent}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Rents</em>' containment reference list.
+	 * @see fr.imta.fil.renter.RenterPackage#getRenter_Rents()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Rent> getRents();
 
 } // Renter

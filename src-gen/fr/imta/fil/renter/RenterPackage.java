@@ -103,13 +103,22 @@ public interface RenterPackage extends EPackage {
 	int RENTER__CLIENTS = 3;
 
 	/**
+	 * The feature id for the '<em><b>Rents</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RENTER__RENTS = 4;
+
+	/**
 	 * The number of structural features of the '<em>Renter</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RENTER_FEATURE_COUNT = 4;
+	int RENTER_FEATURE_COUNT = 5;
 
 	/**
 	 * The number of operations of the '<em>Renter</em>' class.
@@ -149,13 +158,22 @@ public interface RenterPackage extends EPackage {
 	int CLIENT__NAME = 1;
 
 	/**
+	 * The feature id for the '<em><b>Phone Number</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLIENT__PHONE_NUMBER = 2;
+
+	/**
 	 * The feature id for the '<em><b>Birth Date</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CLIENT__BIRTH_DATE = 2;
+	int CLIENT__BIRTH_DATE = 3;
 
 	/**
 	 * The feature id for the '<em><b>Rent</b></em>' reference list.
@@ -164,7 +182,7 @@ public interface RenterPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLIENT__RENT = 3;
+	int CLIENT__RENT = 4;
 
 	/**
 	 * The number of structural features of the '<em>Client</em>' class.
@@ -173,7 +191,7 @@ public interface RenterPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLIENT_FEATURE_COUNT = 4;
+	int CLIENT_FEATURE_COUNT = 5;
 
 	/**
 	 * The number of operations of the '<em>Client</em>' class.
@@ -679,6 +697,17 @@ public interface RenterPackage extends EPackage {
 	EReference getRenter_Clients();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link fr.imta.fil.renter.Renter#getRents <em>Rents</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Rents</em>'.
+	 * @see fr.imta.fil.renter.Renter#getRents()
+	 * @see #getRenter()
+	 * @generated
+	 */
+	EReference getRenter_Rents();
+
+	/**
 	 * Returns the meta object for class '{@link fr.imta.fil.renter.Client <em>Client</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -709,6 +738,17 @@ public interface RenterPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getClient_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link fr.imta.fil.renter.Client#getPhoneNumber <em>Phone Number</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Phone Number</em>'.
+	 * @see fr.imta.fil.renter.Client#getPhoneNumber()
+	 * @see #getClient()
+	 * @generated
+	 */
+	EAttribute getClient_PhoneNumber();
 
 	/**
 	 * Returns the meta object for the attribute '{@link fr.imta.fil.renter.Client#getBirthDate <em>Birth Date</em>}'.
@@ -1000,6 +1040,14 @@ public interface RenterPackage extends EPackage {
 		EReference RENTER__CLIENTS = eINSTANCE.getRenter_Clients();
 
 		/**
+		 * The meta object literal for the '<em><b>Rents</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RENTER__RENTS = eINSTANCE.getRenter_Rents();
+
+		/**
 		 * The meta object literal for the '{@link fr.imta.fil.renter.impl.ClientImpl <em>Client</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1024,6 +1072,14 @@ public interface RenterPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CLIENT__NAME = eINSTANCE.getClient_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Phone Number</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLIENT__PHONE_NUMBER = eINSTANCE.getClient_PhoneNumber();
 
 		/**
 		 * The meta object literal for the '<em><b>Birth Date</b></em>' attribute feature.

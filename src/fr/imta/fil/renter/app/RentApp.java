@@ -17,6 +17,18 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
 import fr.imta.fil.renter.Car;
+import fr.imta.fil.renter.Client;
+import fr.imta.fil.renter.Employee;
+import fr.imta.fil.renter.Manager;
+import fr.imta.fil.renter.PickUp;
+import fr.imta.fil.renter.Rent;
+import fr.imta.fil.renter.Renter;
+import fr.imta.fil.renter.RenterFactory;
+import fr.imta.fil.renter.RenterPackage;
+import fr.imta.fil.renter.Truck;
+import fr.imta.fil.renter.Vehicle;
+
+
 import fr.imta.fil.renter.Employee;
 import fr.imta.fil.renter.Manager;
 import fr.imta.fil.renter.Renter;
@@ -48,6 +60,7 @@ public class RentApp {
 	
 	public static float getInputFloat(Scanner sc) {
 		try{
+			System.out.println("Saisissez un nombre à virgule.");
             float input = sc.nextFloat();
             return input;
         } catch(InputMismatchException e){
@@ -61,13 +74,15 @@ public class RentApp {
 		System.out.println("(1) Ajouter un employé");
 		System.out.println("(2) Supprimer un employé");
 		System.out.println("(3) Ajouter un véhicule");
-		System.out.println("(4) Ajouter un client");
-		System.out.println("(5) Créer une location");
-		System.out.println("(6) Afficher la boutique de location");
-		System.out.println("(8) Charger un modèle");
-		System.out.println("(9) Sauvegarder la boutique dans un modèle et quitter le programme");
-		System.out.println("(10) Créer/Remplacer un manager");
-		System.out.println("(11) (Re)nommer la boutique");
+		System.out.println("(4) Supprimer un véhicule");
+		System.out.println("(5) Ajouter un client");
+		System.out.println("(6) Supprimer un client");
+		System.out.println("(7) Créer une location");
+		System.out.println("(8) Afficher la boutique de location");
+		System.out.println("(9) Charger un modèle");
+		System.out.println("(10) Sauvegarder la boutique dans un modèle et quitter le programme");
+		System.out.println("(11) Créer/Remplacer un manager");
+		System.out.println("(12) (Re)nommer la boutique");
 		System.out.println("------------------------------------");
 		System.out.println("Faites votre choix :");
 		return getInputInt(sc);
@@ -84,7 +99,32 @@ public class RentApp {
 		e.setBirthDate(new Date());
 		return e;
 	}
+		
 	
+	public static Client cliSetClient(RenterFactory rf, Scanner sc) {
+		Client c = rf.createClient();
+		System.out.println("Nom :");
+		String name = getInputString(sc);		
+		System.out.println("Numéro de téléphone :");
+		int phoneNumber = getInputInt(sc);		
+		c.setName(name);
+		c.setPhoneNumber(phoneNumber);
+		c.setBirthDate(new Date());
+		c.setIdClient((new Random()).nextInt(Integer.MAX_VALUE));
+		return c;
+	}
+	
+	public static Rent cliSetRent(RenterFactory rf, Scanner sc) {
+		
+		Rent r = rf.createRent();
+		r.setStartDate(null);
+		r.setEndDate(null);
+		r.setIdRent((new Random()).nextInt(Integer.MAX_VALUE));
+		
+		return r;
+	}
+	
+
 	public static Manager cliSetManager(RenterFactory rf, Scanner sc) {
 		Manager e = rf.createManager();
 		System.out.println("Nom :");
@@ -112,17 +152,99 @@ public class RentApp {
 			System.out.println("Employé non trouvé.");
 	}
 	
-	public static Vehicle cliSetVehicle(RenterFactory rf, Scanner sc) {
+	public static void cliRemoveClient(Renter renter, Scanner sc) {
+
+		System.out.println("Id du client :");
+		int id = getInputInt(sc);
+		boolean isFoundDeleted = renter.getClients().removeIf(client -> (client.getIdClient() == id));
+		System.out.println(isFoundDeleted ? "Client supprimé !" : "Client non trouvé.");
+		
+	}
+	
+	public static void cliRemoveVehicle(Renter renter, Scanner sc) {
+		System.out.println("Id du véhicule :");
+		int id = getInputInt(sc);
+		boolean isFoundDeleted = renter.getVehicles().removeIf(vehicle -> (vehicle.getIdVehicle() == id));
+		System.out.println(isFoundDeleted ? "Véhicule supprimé !" : "Véhicule non trouvé.");
+	}
+	
+	public static Client findClient(Renter renter, Scanner sc) {		
+		System.out.println("Nom :");
+		String name = getInputString(sc);
+		System.out.println("Numéro de téléphone :");
+		int phonenumber = getInputInt(sc);
+		
+		for (Client client : renter.getClients()) {
+	        if ((client.getName().equals(name)) && (client.getPhoneNumber().equals(phonenumber))) {
+	            return client;
+	        }
+	    }
+	    return null;
+	}
+	
+	
+	public static Vehicle findVehicle(Renter renter, Scanner sc) {
+		
+		System.out.println("Id du véhicule :");
+		int id = getInputInt(sc);
+		
+		for (Vehicle v : renter.getVehicles()) {
+	        if ((v.getIdVehicle().equals(id))) {
+	            return v;
+	        }
+	    }
+	    return null;
+		
+	}
+	
+	
+	public static Car cliSetCar(RenterFactory rf, Scanner sc) {
+		Car c = rf.createCar();
+		System.out.println("Nom :");
+		String name = getInputString(sc);
+		c.setName(name);
+		System.out.println("Capacité :");
+		float capa = getInputFloat(sc);
+		c.setHoldingCapacity(capa);
+		c.setIdVehicle((new Random()).nextInt(Integer.MAX_VALUE));
+		System.out.println(c.toString());
+		c.toString();
+		return c;
+	}
+	
+	public static Truck cliSetTruck(RenterFactory rf, Scanner sc) {
 		System.out.println("Nom :");
 		String name = getInputString(sc);
 		System.out.println("Capacité :");
 		float capa = getInputFloat(sc);
+		Truck t = rf.createTruck();
+		t.setName(name);
+		t.setHoldingCapacity(capa);
+		t.setIdVehicle((new Random()).nextInt(Integer.MAX_VALUE));
+		t.toString();
+		return t;
+	}
+	
+	public static PickUp cliSetPickUp(RenterFactory rf, Scanner sc) {
+		System.out.println("Nom :");
+		String name = getInputString(sc);
+		System.out.println("Capacité :");
+		float capa = getInputFloat(sc);
+		PickUp p = rf.createPickUp();
+		p.setName(name);
+		p.setHoldingCapacity(capa);
+		p.setIdVehicle((new Random()).nextInt(Integer.MAX_VALUE));
+		p.toString();
+		return p;
+	}
+	/*
+	public static Vehicle cliSetVehicle(RenterFactory rf, Scanner sc) {
 		Vehicle v = rf.createVehicle();
 		v.setName(name);
 		v.setHoldingCapacity(capa);
 		v.setIdVehicle((new Random()).nextInt());
 		return v;
-	}
+	}*/
 
 	
 	
@@ -130,6 +252,11 @@ public class RentApp {
 		RenterFactory rentFactory = RenterFactory.eINSTANCE;
 		Renter renter = rentFactory.createRenter();
 		
+		boolean arret = false;
+		
+		while (!arret) {
+			int choice = displayChoicesAndGetNumber(sc);
+
 		/***** Configuration du ResourceSet ****/
 		
 		ResourceSet rs = new ResourceSetImpl();
@@ -166,37 +293,79 @@ public class RentApp {
 				case 2:
 					cliRemoveEmployee(renter, sc);
 					break;
-					
-				/**** CONTINUE HERE ****/
-					
-				// TODO: ajouter un véhicule
-				case 3:
-					/*
+										
+				// ajouter un véhicule
+				case 3:					
 					System.out.println("Type de véhicule (voiture/camion/pickup):");
 					String typeVehicle = getInputString(sc);
-					if (typeVehicle.equals("voiture"))
-						renter.getVehicles().add((Car) v);
-						*/
-					break;
+					if (typeVehicle.equals("voiture")) {
+						Car c = cliSetCar(rentFactory, sc);
+						renter.getVehicles().add(c);
+
+					}	
+					if (typeVehicle.equals("camion")) {
+						Truck t = cliSetTruck(rentFactory, sc);
+						renter.getVehicles().add(t);
+					}	
+					if (typeVehicle.equals("pickup")) {
+						PickUp p = cliSetPickUp(rentFactory, sc);
+						renter.getVehicles().add(p);
+					} 
 					
-				// TODO: ajouter un client
-				case 4:
 					break;
+				
+				// Supprimer un véhicule avec l'id
+				case 4:					
+					cliRemoveVehicle(renter, sc);						
+					break;
+						
 					
-				// TODO: créer une location
+				// ajouter un client
 				case 5:
+					Client client = cliSetClient(rentFactory, sc);
+					renter.getClients().add(client);
+					break;
+				
+				// supprimer un client
+				case 6:					
+					cliRemoveClient(renter, sc);					
+					break;
+					
+					
+				// créer une location
+				case 7:
+					Rent rent = cliSetRent(rentFactory, sc);
+					renter.getRents().add(rent);
+					
+					System.out.println("Ajout d'un client pour la location !");
+					Client clientToAdd = findClient(renter, sc);
+					
+					if (clientToAdd != null) {
+						rent.getClient().add(clientToAdd);
+					} else {
+						System.out.println("Client non trouvé ! Il faut créer un client pour ajouter une location.");
+					}
+					System.out.println("Ajout d'une voiture pour la location !");
+					Vehicle vehicleToAdd = findVehicle(renter, sc);
+					if (vehicleToAdd != null) {
+						rent.getVehicle().add(vehicleToAdd);
+					} else {
+						System.out.println("Véhicule non trouvé ! Il faut créer un véhicule pour ajouter une location.");
+					}
 					break;
 					
 				// afficher la boutique
-				case 6:
+				case 8:
 					System.out.println("Nom : "  +renter.getName());
 					System.out.println("Employés : " + renter.getEmployees());
 					System.out.println("Véhicules : " + renter.getVehicles());
 					System.out.println("Clients : " + renter.getClients());
+					System.out.println("Locations : " + renter.getRents());
 					break;
 					
+					
 				// charger un modèle existant
-				case 8:
+				case 9:
 					System.out.println("AVERTISSEMENT : Ceci va remplacer le modèle actuellement chargé et les données non sauvegardées seront perdues.");
 					System.out.println("Donner le nom du fichier modèle à charger :");
 					String fileNameLoad = getInputString(sc);
@@ -215,7 +384,7 @@ public class RentApp {
 					break;
 					
 				// quitter & sauvegarder dans un modèle
-				case 9:
+				case 10:
 					
 					arret = true;
 
@@ -230,7 +399,7 @@ public class RentApp {
 					
 					// notre modèle que l'on a créé avec la factory 
 					Renter racineModeleRenter = renter;
-					
+          
 					// on ajoute notre modèle dans la ressource
 					resource.getContents().add(racineModeleRenter);
 
@@ -242,11 +411,11 @@ public class RentApp {
 					catch (IOException exception) {
 						System.out.println("erreur durant la sauvegarde du modèle : " + exception.getMessage());
 					}
-					
+
 					break;
 					
 				// ajouter un manager
-				case 10:
+				case 11:
 					// remove any existing Manager (not the cleanest way; system model should map the Renter to the Manager)
 					for(Employee emp : renter.getEmployees()) {
 						if (emp instanceof Manager) {
@@ -261,7 +430,7 @@ public class RentApp {
 					break;
 					
 				// donner un nom à la boutique
-				case 11:
+				case 12:
 					System.out.println("Donner un nom à la boutique:");
 					String input = sc.next();
 					renter.setName(input);
@@ -274,6 +443,7 @@ public class RentApp {
 			}
 			
 		}
+
 		System.out.println("Fin du programme.");
 		sc.close();
 		
