@@ -86,7 +86,7 @@ public class ClientImpl extends MinimalEObjectImpl.Container implements Client {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Integer PHONE_NUMBER_EDEFAULT = null;
+	protected static final String PHONE_NUMBER_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getPhoneNumber() <em>Phone Number</em>}' attribute.
@@ -96,7 +96,7 @@ public class ClientImpl extends MinimalEObjectImpl.Container implements Client {
 	 * @generated
 	 * @ordered
 	 */
-	protected Integer phoneNumber = PHONE_NUMBER_EDEFAULT;
+	protected String phoneNumber = PHONE_NUMBER_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getBirthDate() <em>Birth Date</em>}' attribute.
@@ -194,7 +194,7 @@ public class ClientImpl extends MinimalEObjectImpl.Container implements Client {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Integer getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
@@ -203,8 +203,8 @@ public class ClientImpl extends MinimalEObjectImpl.Container implements Client {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPhoneNumber(Integer newPhoneNumber) {
-		Integer oldPhoneNumber = phoneNumber;
+	public void setPhoneNumber(String newPhoneNumber) {
+		String oldPhoneNumber = phoneNumber;
 		phoneNumber = newPhoneNumber;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, RenterPackage.CLIENT__PHONE_NUMBER, oldPhoneNumber, phoneNumber));
@@ -281,7 +281,7 @@ public class ClientImpl extends MinimalEObjectImpl.Container implements Client {
 				setName((String)newValue);
 				return;
 			case RenterPackage.CLIENT__PHONE_NUMBER:
-				setPhoneNumber((Integer)newValue);
+				setPhoneNumber((String)newValue);
 				return;
 			case RenterPackage.CLIENT__BIRTH_DATE:
 				setBirthDate((Date)newValue);

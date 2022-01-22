@@ -42,7 +42,7 @@ public class RentApp {
 		try{
             String input = sc.next();
             return input;
-        } catch(InputMismatchException e){
+        } catch (Exception e) {
             System.out.println("Erreur : " + e.getMessage());
             return "";
         }
@@ -52,7 +52,7 @@ public class RentApp {
 		try{
             int input = sc.nextInt();
             return input;
-        } catch(Exception e){
+        } catch (Exception e) {
             System.out.println("Erreur : " + e.getMessage());
             return -1;
         }
@@ -60,13 +60,29 @@ public class RentApp {
 	
 	public static float getInputFloat(Scanner sc) {
 		try{
-			System.out.println("Saisissez un nombre à virgule.");
+			System.out.println("Saisissez un nombre entier ou à virgule (pas de point!).");
             float input = sc.nextFloat();
             return input;
-        } catch(InputMismatchException e){
+        } catch (Exception e) {
             System.out.println("Erreur : " + e.getMessage());
             return -1;
         }
+	}
+	
+	@SuppressWarnings({ "deprecation", "finally" }) // OK at this project scale
+	public static Date getInputDate(Scanner sc) {
+		System.out.println("Année :");
+		int year = sc.nextInt();
+		System.out.println("Mois : ");
+		int month = sc.nextInt();
+		System.out.println("Jour : ");
+		int day = sc.nextInt();
+		try {
+			return new Date(year-1900, month-1, day); // check documentation
+		} catch (Exception e) {
+			System.out.println("Veuillez révérifier votre saisie.");
+			return null;
+		}
 	}
 	
 	public static int displayChoicesAndGetNumber(Scanner sc) {
@@ -80,9 +96,10 @@ public class RentApp {
 		System.out.println("(7) Créer une location");
 		System.out.println("(8) Afficher la boutique de location");
 		System.out.println("(9) Charger un modèle");
-		System.out.println("(10) Sauvegarder la boutique dans un modèle et quitter le programme");
+		System.out.println("(10) Sauvegarder la boutique dans un modèle");
 		System.out.println("(11) Créer/Remplacer un manager");
 		System.out.println("(12) (Re)nommer la boutique");
+		System.out.println("(13) Quitter le programme");
 		System.out.println("------------------------------------");
 		System.out.println("Faites votre choix :");
 		return getInputInt(sc);
@@ -96,7 +113,7 @@ public class RentApp {
 		System.out.println("Prénom :");
 		String firstName = getInputString(sc);
 		e.setFirstName(firstName);
-		e.setBirthDate(new Date());
+		e.setBirthDate(new Date());		
 		return e;
 	}
 		
@@ -106,7 +123,7 @@ public class RentApp {
 		System.out.println("Nom :");
 		String name = getInputString(sc);		
 		System.out.println("Numéro de téléphone :");
-		int phoneNumber = getInputInt(sc);		
+		String phoneNumber = getInputString(sc);		
 		c.setName(name);
 		c.setPhoneNumber(phoneNumber);
 		c.setBirthDate(new Date());
@@ -114,11 +131,11 @@ public class RentApp {
 		return c;
 	}
 	
-	public static Rent cliSetRent(RenterFactory rf, Scanner sc) {
+	public static Rent initRent(RenterFactory rf, Scanner sc, Date startDate, Date endDate) {
 		
 		Rent r = rf.createRent();
-		r.setStartDate(null);
-		r.setEndDate(null);
+		r.setStartDate(startDate);
+		r.setEndDate(endDate);
 		r.setIdRent((new Random()).nextInt(Integer.MAX_VALUE));
 		
 		return r;
@@ -136,24 +153,15 @@ public class RentApp {
 	}
 	
 	public static void cliRemoveEmployee(Renter renter, Scanner sc) {
-		System.out.println("Prénom :");
-		String firstName = getInputString(sc);
 		System.out.println("Nom :");
 		String name = getInputString(sc);
-		boolean isFoundDeleted = false;
-		for (Employee employee : renter.getEmployees()) {
-			if (employee.getFirstName() == firstName && employee.getName() == name) {
-				renter.getEmployees().remove(employee);
-				isFoundDeleted = true;
-				System.out.println("Employé supprimé !");
-			}
-		}
-		if (isFoundDeleted)
-			System.out.println("Employé non trouvé.");
+		System.out.println("Prénom :");
+		String firstName = getInputString(sc);
+		boolean isFoundDeleted = renter.getEmployees().removeIf(employee -> (employee.getFirstName().equals(firstName) && employee.getName().equals(name)));
+		System.out.println(isFoundDeleted ? "Employé supprimé !" : "Employé non trouvé.");
 	}
 	
 	public static void cliRemoveClient(Renter renter, Scanner sc) {
-
 		System.out.println("Id du client :");
 		int id = getInputInt(sc);
 		boolean isFoundDeleted = renter.getClients().removeIf(client -> (client.getIdClient() == id));
@@ -172,7 +180,7 @@ public class RentApp {
 		System.out.println("Nom :");
 		String name = getInputString(sc);
 		System.out.println("Numéro de téléphone :");
-		int phonenumber = getInputInt(sc);
+		String phonenumber = getInputString(sc);
 		
 		for (Client client : renter.getClients()) {
 	        if ((client.getName().equals(name)) && (client.getPhoneNumber().equals(phonenumber))) {
@@ -207,8 +215,6 @@ public class RentApp {
 		float capa = getInputFloat(sc);
 		c.setHoldingCapacity(capa);
 		c.setIdVehicle((new Random()).nextInt(Integer.MAX_VALUE));
-		System.out.println(c.toString());
-		c.toString();
 		return c;
 	}
 	
@@ -221,7 +227,6 @@ public class RentApp {
 		t.setName(name);
 		t.setHoldingCapacity(capa);
 		t.setIdVehicle((new Random()).nextInt(Integer.MAX_VALUE));
-		t.toString();
 		return t;
 	}
 	
@@ -234,17 +239,30 @@ public class RentApp {
 		p.setName(name);
 		p.setHoldingCapacity(capa);
 		p.setIdVehicle((new Random()).nextInt(Integer.MAX_VALUE));
-		p.toString();
 		return p;
 	}
-	/*
-	public static Vehicle cliSetVehicle(RenterFactory rf, Scanner sc) {
-		Vehicle v = rf.createVehicle();
-		v.setName(name);
-		v.setHoldingCapacity(capa);
-		v.setIdVehicle((new Random()).nextInt());
-		return v;
-	}*/
+	
+	public static boolean checkAvailabilityRent(Renter renter, Client clientToAdd, Vehicle vehicleToAdd, Date startDate, Date endDate) {
+		
+		for (Rent rent: renter.getRents()) {
+			// check if the client has (or not) booked a rent
+			if (rent.getClient().get(0).equals(clientToAdd)) {
+				System.out.println("Vous avez déjà une réservation ! La voici : " + rent.toString() + ", Véhicule : " + rent.getVehicle().toString());
+				return false;
+			}
+			
+			// check if the car is being used
+			if (rent.getVehicle().get(0).equals(vehicleToAdd)) {
+				// in 'main' function, startDate & endDate should be in the right order
+				if (!(rent.getEndDate().before(startDate) || rent.getStartDate().after(endDate))) {
+					System.out.println("La voiture demandée est indisponible. Voici la réservation pour laquelle elle est empruntée : " +  rent.toString());
+					return false;
+				}
+			}
+		}
+		return true;
+
+	}
 
 	
 	
@@ -252,10 +270,6 @@ public class RentApp {
 		RenterFactory rentFactory = RenterFactory.eINSTANCE;
 		Renter renter = rentFactory.createRenter();
 		
-		boolean arret = false;
-		
-		while (!arret) {
-			int choice = displayChoicesAndGetNumber(sc);
 
 		/***** Configuration du ResourceSet ****/
 		
@@ -283,6 +297,7 @@ public class RentApp {
 			int choice = displayChoicesAndGetNumber(sc);
 
 			switch (choice) {
+			
 				// ajouter un employé
 				case 1:
 					Employee employee = cliSetEmployee(rentFactory, sc);
@@ -302,15 +317,15 @@ public class RentApp {
 						Car c = cliSetCar(rentFactory, sc);
 						renter.getVehicles().add(c);
 
-					}	
-					if (typeVehicle.equals("camion")) {
+					} else if (typeVehicle.equals("camion")) {
 						Truck t = cliSetTruck(rentFactory, sc);
 						renter.getVehicles().add(t);
-					}	
-					if (typeVehicle.equals("pickup")) {
+					} else if (typeVehicle.equals("pickup")) {
 						PickUp p = cliSetPickUp(rentFactory, sc);
 						renter.getVehicles().add(p);
-					} 
+					} else {
+						System.out.println("Saisie incorrecte, veuillez réessayer.");
+					}
 					
 					break;
 				
@@ -334,40 +349,71 @@ public class RentApp {
 					
 				// créer une location
 				case 7:
-					Rent rent = cliSetRent(rentFactory, sc);
-					renter.getRents().add(rent);
 					
-					System.out.println("Ajout d'un client pour la location !");
+					
+					System.out.println("Ajout du client existant à la location :");
 					Client clientToAdd = findClient(renter, sc);
 					
 					if (clientToAdd != null) {
-						rent.getClient().add(clientToAdd);
+						System.out.println("Ajout du véhicule pour la location :");
+						Vehicle vehicleToAdd = findVehicle(renter, sc);
+						
+						if (vehicleToAdd != null) {
+							
+							System.out.println("Date de début :");
+							Date startDate = getInputDate(sc);
+							System.out.println("Date de fin :");
+							Date endDate = getInputDate(sc);
+							
+							if (startDate == null || endDate == null) {
+								break;
+							}
+
+							// a client can rent a car for the day
+							if (startDate.compareTo(endDate) > 0) {
+								System.out.println("La début de début est après celle de fin : veuillez réessayer.");
+								break;
+							}
+							
+							boolean eligibility = checkAvailabilityRent(renter, clientToAdd, vehicleToAdd, startDate, endDate);
+							
+							// finally add to list of rents
+							if (eligibility) {
+								Rent rent = initRent(rentFactory, sc, startDate, endDate);
+								rent.getClient().add(clientToAdd);
+								rent.getVehicle().add(vehicleToAdd);
+								renter.getRents().add(rent);
+								System.out.println("Location créée !");
+							} else {
+								System.out.println("Impossible de créer la location : le client loue déjà un véhicule ou le véhicule demandé est indisponible.");
+
+							}
+						} else {
+							System.out.println("Véhicule non trouvé ! Il faut fournir un véhicule existant pour créer une location.");
+						}
 					} else {
-						System.out.println("Client non trouvé ! Il faut créer un client pour ajouter une location.");
+						System.out.println("Client non trouvé ! Il faut fournir un client existant pour créer une location.");
 					}
-					System.out.println("Ajout d'une voiture pour la location !");
-					Vehicle vehicleToAdd = findVehicle(renter, sc);
-					if (vehicleToAdd != null) {
-						rent.getVehicle().add(vehicleToAdd);
-					} else {
-						System.out.println("Véhicule non trouvé ! Il faut créer un véhicule pour ajouter une location.");
-					}
+					
 					break;
 					
 				// afficher la boutique
 				case 8:
 					System.out.println("Nom : "  +renter.getName());
-					System.out.println("Employés : " + renter.getEmployees());
-					System.out.println("Véhicules : " + renter.getVehicles());
-					System.out.println("Clients : " + renter.getClients());
-					System.out.println("Locations : " + renter.getRents());
+					System.out.println("Employés : " + renter.getEmployees().toString());
+					System.out.println("Véhicules : " + renter.getVehicles().toString());
+					System.out.println("Clients : " + renter.getClients().toString());
+					System.out.println("Locations : ");
+					for(Rent r: renter.getRents()) {
+						System.out.println("* " + r.toString() + ", Client : " + r.getClient().toString() + ", Véhicule : " + r.getVehicle().toString());
+					}
 					break;
 					
 					
 				// charger un modèle existant
 				case 9:
 					System.out.println("AVERTISSEMENT : Ceci va remplacer le modèle actuellement chargé et les données non sauvegardées seront perdues.");
-					System.out.println("Donner le nom du fichier modèle à charger :");
+					System.out.println("Donner le nom du fichier modèle à charger (bien préciser l'extension '.xmi' :");
 					String fileNameLoad = getInputString(sc);
 
 					// création d'une resource à partir d'un fichier existant
@@ -377,19 +423,20 @@ public class RentApp {
 
 					// Je pars du principe que la classe Renter est la racine de notre modèle
 					renter = (Renter)(resourceFromExistent.getContents().get(0));
+					
+					System.out.println("Modèle chargé !");
 					} catch (Exception e) {
 						System.out.println("erreur : le fichier n'existe pas :" + e.getMessage());
 					}
 					
 					break;
 					
-				// quitter & sauvegarder dans un modèle
+				// sauvegarder dans un modèle
 				case 10:
 					
-					arret = true;
 
 					// ------ ResourceSet part ----------------- //
-					System.out.println("Donner un nom au fichier :");
+					System.out.println("Donner un nom au fichier (extension '.xmi' ajoutée automatiquement) :");
 					String fileNameSave = getInputString(sc);
 					
 					
@@ -436,6 +483,11 @@ public class RentApp {
 					renter.setName(input);
 					break;
 				
+				// quitter le programme
+				case 13:
+					arret = true;
+					break;
+					
 				default:
 					System.out.println("Choix invalide, veuillez réessayer.");
 					break;

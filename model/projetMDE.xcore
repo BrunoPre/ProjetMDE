@@ -18,7 +18,7 @@ class Renter {
 class Client { // Client --one--> Vehicle (only 0/1 Client can rent a vehicle)
 	Integer idClient
 	String name
-	Integer phoneNumber
+	String phoneNumber
 	Date birthDate
 	refers Rent[] rent
 }

@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="ASCII"?>
-<renter:Renter xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:renter="fr.imta.fil.renter" name="adad">
-  <employees xsi:type="renter:Manager" name="ad" firstName="da" birthDate="2022-01-20T20:32:29.357+0100"/>
+<renter:Renter xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:renter="fr.imta.fil.renter" name="Rent-A-Car">
+  <employees xsi:type="renter:Manager" name="Fouill&#xe9;" firstName="Justine" birthDate="2022-01-21T15:27:06.566+0100"/>
+  <employees name="Vautier" firstName="Paul" birthDate="2022-01-21T15:36:41.903+0100"/>
+  <vehicles xsi:type="renter:Car" idVehicle="1638284491" name="Golf" holdingCapacity="6.0"/>
+  <clients idClient="35978586" name="Preka" phoneNumber="+33" birthDate="2022-01-21T15:26:44.843+0100"/>
+  <rents idRent="588522605" client="//@clients.0" vehicle="//@vehicles.0"/>
 </renter:Renter>

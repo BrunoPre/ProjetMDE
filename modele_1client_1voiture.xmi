@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ASCII"?>
+<renter:Renter xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:renter="fr.imta.fil.renter" name="AVIA">
+  <employees name="Vautier" firstName="Paul" birthDate="2022-01-22T12:15:51.643+0100"/>
+  <employees xsi:type="renter:Manager" name="Fouill&#xe9;" firstName="Justine" birthDate="2022-01-22T12:16:04.281+0100"/>
+  <vehicles xsi:type="renter:Car" idVehicle="703752352" name="golf" holdingCapacity="6.0"/>
+  <clients idClient="31146879" name="Preka" phoneNumber="+33" birthDate="2022-01-22T12:09:31.706+0100"/>
+</renter:Renter>

@@ -78,12 +78,12 @@ public interface Client extends EObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Phone Number</em>' attribute.
-	 * @see #setPhoneNumber(Integer)
+	 * @see #setPhoneNumber(String)
 	 * @see fr.imta.fil.renter.RenterPackage#getClient_PhoneNumber()
 	 * @model unique="false"
 	 * @generated
 	 */
-	Integer getPhoneNumber();
+	String getPhoneNumber();
 
 	/**
 	 * Sets the value of the '{@link fr.imta.fil.renter.Client#getPhoneNumber <em>Phone Number</em>}' attribute.
@@ -93,7 +93,7 @@ public interface Client extends EObject {
 	 * @see #getPhoneNumber()
 	 * @generated
 	 */
-	void setPhoneNumber(Integer value);
+	void setPhoneNumber(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Birth Date</b></em>' attribute.
