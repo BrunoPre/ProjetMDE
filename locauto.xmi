@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ASCII"?>
+<renter:Renter xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:renter="fr.imta.fil.renter" name="LocAuto">
+  <employees name="Smith" firstName="John" birthDate="2022-01-23T12:11:26.025+0100"/>
+  <employees name="Dub&#xe9;" firstName="Flord&#xe9;lis" birthDate="2022-01-23T12:13:48.664+0100"/>
+  <vehicles xsi:type="renter:Car" idVehicle="1317267836" name="Skoda" holdingCapacity="4.8"/>
+  <vehicles xsi:type="renter:Truck" idVehicle="587005601" name="Tank" holdingCapacity="17.8"/>
+  <vehicles xsi:type="renter:PickUp" idVehicle="517968182" name="RangeRover" holdingCapacity="8.7"/>
+  <clients idClient="1393889945" name="Amabella" phoneNumber="069834578428" birthDate="2022-01-23T12:16:01.241+0100"/>
+  <clients idClient="961129778" name="Barette" phoneNumber="0789357219" birthDate="2022-01-23T12:17:38.023+0100"/>
+  <rents idRent="2124797280" startDate="2022-01-26T00:00:00.000+0100" endDate="2022-01-29T00:00:00.000+0100" client="//@clients.0" vehicle="//@vehicles.0"/>
+  <rents idRent="1140399709" startDate="2022-01-29T00:00:00.000+0100" endDate="2022-02-10T00:00:00.000+0100" client="//@clients.1" vehicle="//@vehicles.1"/>
+</renter:Renter>
